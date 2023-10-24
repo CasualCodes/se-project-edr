@@ -38,22 +38,20 @@ Disclaimer: this document is a work in progress. do inform me of concerns/confli
 **III. Coding Proper**
 > Be sure to read the comments to navigate through the code
 
-### DEVELOPMENT: KIVY
+### DEVELOPMENT: KIVY/KIVYMD
+NOTE: KIVY MD contains resources for a more modernized/clean UI look. While KIVY is just the normal framework.
 **I. Setting up Kivy/KivyMD for VSCode**
->
+> (Kivy) From Docs: https://kivy.org/doc/stable/gettingstarted/installation.html
+> (KivyMD) From Docs: https://kivymd.readthedocs.io/en/1.1.1/getting-started/
 
 **I(Alternate). Setting up Kivy/KivyMD for PyCharm Users**
->
+> Found this tutorial, uses PyCharm so unsure if applicable to others: https://www.youtube.com/watch?v=LRXo0juuTrw&list=PLhTjy8cBISEoQQLZ9IBlVlr4WjVoStmy-&index=1
 
-**II. Kivy Tutorials (Use them in accordance to what requirements are to be addressed)**
-> 
-> 
-
-
+**II. DOCS (Use them in accordance to what requirements are to be addressed)**
+> https://kivy.org/doc/stable/
+> You can use other tutorials in youtube.
 
 ### BUILDING: BUILDOZER
 **I. Installation and Use of Buildozer**
->
->
-
+> https://www.youtube.com/watch?v=pzsvN3fuBA0
 
