@@ -2,9 +2,13 @@
 
 **Software Engineering 1** (SY 2023-2024): **Eye Disease Recognition Project**
 
+
+
 ## About
 
 We are all new to using GitHub, even more so in handling a Software Engineering project. This README.md document is all about informing each of us what we need to setup in order to do the project.
+
+
 
 ## Step-by-Step
 
@@ -13,6 +17,8 @@ This section contains information on what to setup.
 Disclaimer: most of this section is filled with YouTube video links
 
 Disclaimer: this document is a work in progress. do inform me of concerns/conflicts
+
+
 
 ### PREPARATION: Git and GitHub Desktop
 
