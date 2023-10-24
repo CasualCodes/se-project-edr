@@ -23,10 +23,13 @@ Disclaimer: this document is a work in progress. do inform me of concerns/confli
 > Inform me through messenger if you need guidance/help
 > You can also ask other members that know basic knowledge in using Git and GitHub Desktop
 
+
+
 ### DEVELOPMENT: General Setup (CNN Model Training, Coding)
 
 **I. Coding | CNN Setups:** https://www.youtube.com/watch?v=19LQRx78QVU
 > This has most of the applications/tools we’ll use for the project
+> Consider this as our Jupyter tutorial as well
 > The GPU Section is Optional
 
 **II. Data Gathering + CNN Training:** https://www.youtube.com/watch?v=jztwpsIzEGc
@@ -36,5 +39,21 @@ Disclaimer: this document is a work in progress. do inform me of concerns/confli
 > Be sure to read the comments to navigate through the code
 
 ### DEVELOPMENT: KIVY
+**I. Setting up Kivy/KivyMD for VSCode**
+>
+
+**I(Alternate). Setting up Kivy/KivyMD for PyCharm Users**
+>
+
+**II. Kivy Tutorials (Use them in accordance to what requirements are to be addressed)**
+> 
+> 
+
+
 
 ### BUILDING: BUILDOZER
+**I. Installation and Use of Buildozer**
+>
+>
+
+
