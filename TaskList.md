@@ -20,18 +20,16 @@
 * > <> Image Classification Model Training
 * > <> Backend Requirement Implementations
 * > <> Frontend Requirement Implementations
-* > <> Component Integrations
-* > <> Documentation Creation
+* > <> Component Integration
 
 * [] Creation of Intermediate Versions
 * > <> Review of Previous Version
-* > <> Bug Fixing
-* > <> Addressing Missed Requirements and Addition of Features
-* >>> <> Image Classification Model Training
-* >>> <> Backend Requirement Implementations
-* >>> <> Frontend Requirement Implementations
-* >>> <> Component Integrations
 * > <> Documentation Creation
+* > <> Bug Fixing
+* > <> Additional Image Classification Model Training
+* > <> Additional Backend Requirement Implementations
+* > <> Additional Frontend Requirement Implementations
+* > <> Additional Component Integrations
 
 **Validation**
 * [] Initial Version Validation
