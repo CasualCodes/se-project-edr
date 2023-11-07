@@ -11,8 +11,8 @@
 * [*] Revisions of PD 4
 * [~] Eye Disease Data Gathering and Identification
 * [*] Creation of PD 6 (Architecture)
-* [~] Creation of PD 7 (Proposed Project Timeline)
-* [] Creation of PD 8 (Specification Tree)
+* [*] Creation of PD 7 (Proposed Project Timeline)
+* [~] Creation of PD 8 (Specification Tree)
 * [#] Additional Specifications
 
 **[] Development**
