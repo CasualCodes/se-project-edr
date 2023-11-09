@@ -1,12 +1,13 @@
 # Project AISight | AIDetect | Etc.
+import front_end
 
 ##--MAIN INITIALIZATION--#
-debug = 0
+debug = 1
 
 # Main
 def main():
     if (debug == 1):
-            print("Test:")
+        front_end.aisight_mscreen().run()
     else:
         print("Hello World!")
 
