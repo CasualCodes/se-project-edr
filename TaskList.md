@@ -5,22 +5,22 @@
 * [*] Creation of PD 2 (Problem Statement)
 * [*] Revision of PD 1 and PD 2
 
-**[~] Specification**
+**[*] Specification**
 * [*] Initial Identification of Eye Diseases
 * [*] Creation of PD 4 (Software Processes)
 * [*] Revisions of PD 4
 * [~] Eye Disease Data Gathering and Identification
 * [*] Creation of PD 6 (Architecture)
 * [*] Creation of PD 7 (Proposed Project Timeline)
-* [~] Creation of PD 8 (Specification Tree)
-* [#] Additional Specifications
+* [*] Creation of PD 8 (Specification Tree)
+* [~#] Additional Specifications
 
-**[] Development**
-* [] Creation of Initial Version (Project Prototype)
-* > <> Image Classification Model Training
+**[~] Development**
+* [~] Creation of Initial Version (Project Prototype)
+* > <~> Image Classification Model Training
 * > <> Backend Requirement Implementations
-* > <> Frontend Requirement Implementations
-* > <> Component Integration
+* > <~> Frontend Requirement Implementations
+* > <~> Component Integration
 
 * [] Creation of Intermediate Versions
 * > <> Review of Previous Version

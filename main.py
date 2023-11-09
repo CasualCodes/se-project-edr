@@ -1,4 +1,6 @@
 # Project AISight | AIDetect | Etc.
+import front_end
+# add imports to back_end
 
 ##--MAIN INITIALIZATION--#
 debug = 0
@@ -6,8 +8,11 @@ debug = 0
 # Main
 def main():
     if (debug == 1):
-            print("Test:")
+        # Front End Test
+        front_end.front_end_main().run()
+
     else:
-        print("Hello World!")
+        # Call Front End
+        front_end.front_end_main().run()
 
 main()
