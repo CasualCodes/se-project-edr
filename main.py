@@ -2,13 +2,16 @@
 import front_end
 
 ##--MAIN INITIALIZATION--#
-debug = 1
+debug = 0
 
 # Main
 def main():
     if (debug == 1):
+        # Front End Test
         front_end.front_end_main().run()
+
     else:
-        print("Hello World!")
+        # Call Front End
+        front_end.front_end_main().run()
 
 main()

@@ -5,19 +5,15 @@ from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 import ui_screens
 
-# Screens
+# Screen Initialization
 class MainScreen(Screen):
     pass
-
-
 class AssessmentScreen(Screen):
     pass
-
-
 class ResultsScreen(Screen):
     pass
 
-# Create the screen manager
+# Screen Manager Initializations (Preparation for builder use)
 screen_manager = ScreenManager()
 screen_manager.add_widget(MainScreen(name='main'))
 screen_manager.add_widget(AssessmentScreen(name='assess'))
