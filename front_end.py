@@ -40,7 +40,7 @@ screen_manager.add_widget(ResultsScreen(name='result'))
 # Main Front End Execution
 class front_end_main(MDApp):
     def build(self):
-        screen = Builder.load_file('ui_screens.kv')
+        screen = Builder.load_string(ui_screens.screens)
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "Blue"
         return screen

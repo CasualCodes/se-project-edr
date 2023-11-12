@@ -49,22 +49,27 @@ result_screen = """
 <ResultsScreen>:
     name: 'result'
     MDLabel:
-        id: 'lb'
+        id: lb
         text: root.definition
         halign: 'center'
         valgin: 'center'
+    MDRectangleFlatButton:
+        text: "View Result"
+        pos_hint: {"center_x": .5, "center_y": .4}
+        on_press:
+            root.update()
     MDRectangleFlatButton:
         text: "Assess Again"
         pos_hint: {"center_x": .5, "center_y": .3}
         on_press: 
             root.manager.current = 'assess'
-            root.update()
+            root.clear()
     MDRectangleFlatButton:
         text: "Back to Main"
         pos_hint: {"center_x": .5, "center_y": .2}
         on_press: 
             root.manager.current = 'main'
-            root.update()
+            root.clear()
 
 
 """
