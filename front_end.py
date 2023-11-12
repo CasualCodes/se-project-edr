@@ -21,10 +21,12 @@ class AssessmentScreen(Screen):
         # inputData = GET INPUT FROM CAMERA/GALLERY
 
         global outputData
+        # processinput takes the PATH of the image, and then updates outputData of the results
         outputData = back_end.processInput(inputData)
 
 class ResultsScreen(Screen):
     definition = StringProperty()
+    # update is what displays the results in result page
     def update(self):
         global outputData
         self.ids.lb.text = outputData
