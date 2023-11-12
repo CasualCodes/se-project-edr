@@ -7,27 +7,35 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.uix.filemanager import MDFileManager
 from kivymd.toast import toast
 
+from kivymd.uix.label import MDLabel
+from kivy.properties import StringProperty
 import ui_screens
+import back_end
+
+inputData = StringProperty()
+outputData = StringProperty()
 
 # Screen Initialization
 class MainScreen(Screen):
     pass
 
 class AssessmentScreen(Screen):
-    # def __init__(self, **kwargs):
-    # def __init__(self, **kwargs):
-    #     # super().__init__(**kwargs)
-    #     self.manager_open = False
-    #     self.file_manager = MDFileManager(
-    #         exit_manager=self.exit_manager,
-    #         select_path=self.select_path,
-    #         preview=True,
-    #     )
+    def callBackEnd(self):
+        global inputData
+        # inputData = GET INPUT FROM CAMERA/GALLERY
 
-    pass
+        global outputData
+        # processinput takes the PATH of the image, and then updates outputData of the results
+        outputData = back_end.processInput(inputData)
 
 class ResultsScreen(Screen):
-    pass
+    definition = StringProperty()
+    # update is what displays the results in result page
+    def update(self):
+        global outputData
+        self.ids.lb.text = outputData
+    def clear(self):
+        self.ids.lb.text = ""
 
 # Screen Manager Initializations (Preparation for builder use)
 screen_manager = ScreenManager()
