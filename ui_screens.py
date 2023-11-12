@@ -31,10 +31,13 @@ assessment_screen = """
         pos_hint: {"center_x": .5, "center_y": .3}
         on_press: root.manager.current = 'main'
     MDRectangleFlatButton:
-        text: "Upload Eye Image"
+        text: "Upload Eye Image Using Gallery"
         pos_hint: {"center_x": .5, "center_y": .2}
         on_press: root.manager.current = 'result'
-
+    MDRectangleFlatButton:
+        text: "Upload Eye Image Using Camera"
+        pos_hint: {"center_x": .5, "center_y": .1}
+        on_press: root.manager.current = 'result'
 """
 
 result_screen = """
