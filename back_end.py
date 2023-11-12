@@ -12,19 +12,23 @@ loaded_model = tensorflow.keras.models.load_model('data\model\ignore\model_conju
 # Print the class labels
 class_labels = list(["Cataract", "Conjunctivitis", "Normal", "Trachoma"])
 
-## DATA PREPROCESS
-inputimage = "cataract_input"
-test_image_path = "data\input\\" + inputimage + ".jpg"
-img = image.load_img(test_image_path, target_size=(256, 256))
-img_array = image.img_to_array(img)
-img_array = np.expand_dims(img_array, axis=0)
-img_array /= 255.  # Normalize the image
-# Input to Model
-prediction = loaded_model.predict(img_array)
+def processInput(inputData):
+    ## DATA PREPROCESS
+    inputimage = "cataract_input"
+    test_image_path = "data\input\\" + inputimage + ".jpg"
 
-## RESULT ##
-# Get Result
-predicted_class = np.argmax(prediction, axis=-1)
-predicted_label = class_labels[predicted_class[0]]
-# Output Result
-print("The predicted class is:", predicted_label)
+    #test_image_path = inputImagePath
+    img = image.load_img(test_image_path, target_size=(256, 256))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array /= 255.  # Normalize the image
+    # Input to Model
+    prediction = loaded_model.predict(img_array)
+
+    ## RESULT ##
+    # Get Result
+    predicted_class = np.argmax(prediction, axis=-1)
+    predicted_label = class_labels[predicted_class[0]]
+    # Output Result
+    #print("The predicted class is:", predicted_label)
+    return predicted_label
