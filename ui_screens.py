@@ -33,7 +33,7 @@ assessment_screen = """
     MDRectangleFlatButton:
         text: "Upload Eye Image Using Gallery"
         pos_hint: {"center_x": .5, "center_y": .2}
-        on_press: root.manager.current = 'result'
+        on_press: app.file_manager_open()
     MDRectangleFlatButton:
         text: "Upload Eye Image Using Camera"
         pos_hint: {"center_x": .5, "center_y": .1}
