@@ -55,11 +55,6 @@ result_screen = """
         halign: 'center'
         valgin: 'center'
     MDRectangleFlatButton:
-        text: "View Result"
-        pos_hint: {"center_x": .5, "center_y": .4}
-        on_press:
-            root.update()
-    MDRectangleFlatButton:
         text: "Assess Again"
         pos_hint: {"center_x": .5, "center_y": .3}
         on_press: 
@@ -74,5 +69,12 @@ result_screen = """
 
 
 """
+'''
+MDRectangleFlatButton:
+        text: "View Result"
+        pos_hint: {"center_x": .5, "center_y": .4}
+        on_press:
+            root.update()
+'''
 
 screens = screen_manager + main_screen + assessment_screen + result_screen
