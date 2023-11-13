@@ -14,10 +14,10 @@ class_labels = list(["Cataract", "Conjunctivitis", "Normal", "Trachoma"])
 
 def processInput(inputData):
     ## DATA PREPROCESS
-    inputimage = "cataract_input"
-    test_image_path = "data\input\\" + inputimage + ".jpg"
+    # inputimage = "cataract_input"
+    # test_image_path = "data\input\\" + inputimage + ".jpg"
 
-    #test_image_path = inputImagePath
+    test_image_path = inputData
     img = image.load_img(test_image_path, target_size=(256, 256))
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)

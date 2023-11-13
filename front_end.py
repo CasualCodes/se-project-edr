@@ -12,7 +12,7 @@ from kivy.properties import StringProperty
 import ui_screens
 import back_end
 
-inputData = StringProperty()
+inputData = ""
 outputData = StringProperty()
 
 # Screen Initialization
@@ -22,11 +22,14 @@ class MainScreen(Screen):
 class AssessmentScreen(Screen):
     def callBackEnd(self):
         global inputData
+        print("InputData " + inputData)
         # inputData = GET INPUT FROM CAMERA/GALLERY
+
+        #root.callBackEnd()
 
         global outputData
         # processinput takes the PATH of the image, and then updates outputData of the results
-        outputData = back_end.processInput(inputData)
+        # outputData = back_end.processInput(inputData)
 
 class ResultsScreen(Screen):
     definition = StringProperty()
@@ -71,7 +74,14 @@ class front_end_main(MDApp):
         self.exit_manager()
         # toast(path)
         print(path)
-        print("Returned Path")
+        print("Returned Path" + path)
+
+        global outputData
+        # processinput takes the PATH of the image, and then updates outputData of the results
+        outputData = back_end.processInput(path)
+
+        global inputData
+        inputData = path
         return path
 
     def exit_manager(self, *args):
