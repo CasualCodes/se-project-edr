@@ -9,6 +9,9 @@ from kivymd.toast import toast
 
 from kivymd.uix.label import MDLabel
 from kivy.properties import StringProperty
+
+import cv2
+
 import ui_screens
 import back_end
 
@@ -88,6 +91,29 @@ class front_end_main(MDApp):
         '''Called when the user reaches the root of the directory tree.'''
 
         self.file_manager.close()
+
+    def open_camera(self, *args):
+        '''Called when the user clicks the capture using camera button'''
+
+        # Open the camera
+        cap = cv2.VideoCapture(0)
+
+        while(True):
+            # Capture frame-by-frame
+            ret, frame = cap.read()
+
+            # Display the resulting frame
+            cv2.imshow('frame', frame)
+            
+            # Break the loop on pressing 'q'
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+
+        cv2.imwrite('photo.jpg', frame)
+        # Release the capture and destroy all windows when done
+        cap.release()
+        cv2.destroyAllWindows()
+
 
 
 

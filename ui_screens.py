@@ -41,7 +41,7 @@ assessment_screen = """
         text: "Upload Eye Image Using Camera"
         pos_hint: {"center_x": .5, "center_y": .1}
         on_press: 
-            root.callBackEnd()
+            app.open_camera()
             root.manager.current = 'result'
 """
 
