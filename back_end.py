@@ -2,15 +2,16 @@
 # Imports
 import tensorflow
 import numpy as np
+import efficientnet.tfkeras
 from tensorflow.keras.preprocessing import image
 # the above imports are the things you need to run this code.. which should be ok given that the tutorials are followed
 
 ## MODEL ##
 # Load the saved model
-loaded_model = tensorflow.keras.models.load_model('data\model\ignore\model_conjunct_cataract_trachoma_normal.h5')
+loaded_model = tensorflow.keras.models.load_model('data\model\ignore\modelnew.h5')
 
 # Print the class labels
-class_labels = list(["Cataract", "Conjunctivitis", "Normal", "Trachoma"])
+class_labels = list(["Cataract", "Conjunctivitis", "Normal", "Pterygium", "Trachoma"])
 
 def processInput(inputData):
     ## DATA PREPROCESS
