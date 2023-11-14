@@ -106,13 +106,21 @@ class front_end_main(MDApp):
             cv2.imshow('frame', frame)
             
             # Break the loop on pressing 'q'
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            if cv2.waitKey(1) & 0xFF == ord('c'):
                 break
 
         cv2.imwrite('photo.jpg', frame)
         # Release the capture and destroy all windows when done
         cap.release()
         cv2.destroyAllWindows()
+
+        global outputData
+        # processinput takes the PATH of the image, and then updates outputData of the results
+        outputData = back_end.processInput('photo.jpg')
+        self.screen.get_screen(name='result').ids.lb.text = outputData
+        global inputData
+        inputData = 'photo.jpg'
+        return 'photo.jpg'
 
 
 
