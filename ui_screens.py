@@ -31,10 +31,17 @@ assessment_screen = """
         pos_hint: {"center_x": .5, "center_y": .3}
         on_press: root.manager.current = 'main'
     MDRectangleFlatButton:
-        text: "Upload Eye Image"
+        text: "Upload Eye Image Using Gallery"
         pos_hint: {"center_x": .5, "center_y": .2}
-        on_press: root.manager.current = 'result'
-
+        on_press: 
+            app.file_manager_open()
+            root.manager.current = 'result'
+    MDRectangleFlatButton:
+        text: "Upload Eye Image Using Camera"
+        pos_hint: {"center_x": .5, "center_y": .1}
+        on_press: 
+            app.open_camera()
+            root.manager.current = 'result'
 """
 
 result_screen = """
@@ -42,18 +49,31 @@ result_screen = """
 <ResultsScreen>:
     name: 'result'
     MDLabel:
-        text: 'Results Screen'
+        id: lb
+        text: root.definition
         halign: 'center'
         valgin: 'center'
     MDRectangleFlatButton:
         text: "Assess Again"
         pos_hint: {"center_x": .5, "center_y": .3}
-        on_press: root.manager.current = 'assess'
+        on_press: 
+            root.manager.current = 'assess'
+            root.clear()
     MDRectangleFlatButton:
         text: "Back to Main"
         pos_hint: {"center_x": .5, "center_y": .2}
-        on_press: root.manager.current = 'main'
+        on_press: 
+            root.manager.current = 'main'
+            root.clear()
+
 
 """
+'''
+MDRectangleFlatButton:
+        text: "View Result"
+        pos_hint: {"center_x": .5, "center_y": .4}
+        on_press:
+            root.update()
+'''
 
 screens = screen_manager + main_screen + assessment_screen + result_screen
