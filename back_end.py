@@ -30,3 +30,7 @@ def processInput(inputData):
     predicted_label = class_labels[predicted_class[0]] # The Output
     # Output Result
     return predicted_label
+
+# Temporary Fix For Loading Times
+def dummy():
+    processInput("data\input\cataract_input.jpg")

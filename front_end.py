@@ -62,6 +62,10 @@ class front_end_main(MDApp):
             preview=True,
         )
 
+        #Dummy Input Loading
+        back_end.dummy()
+        self.screen.get_screen(name='result').ids.lb.text = ""
+
         return self.screen
 
     def file_manager_open(self):
