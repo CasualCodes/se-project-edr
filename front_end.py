@@ -1,15 +1,9 @@
 # Front End Source Code
-# add imports for the camera/gallery retrieval (and permissions)
+# Import needed libraries/components for the camera/gallery retrieval (and permissions)
 from kivymd.app import MDApp
 from kivy.lang.builder import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
-
+from kivy.uix.screenmanager import Screen
 from kivymd.uix.filemanager import MDFileManager
-from kivymd.toast import toast
-
-from kivymd.uix.label import MDLabel
-from kivy.properties import StringProperty
-
 import cv2
 
 import ui_screens
@@ -62,10 +56,6 @@ class front_end_main(MDApp):
             self.callBackend(path)
             self.screen.current = 'result'
 
-        # outputData = back_end.processInput(path)
-        # self.screen.get_screen(name='result').ids.lb.text = outputData
-        # return path
-
     def exit_manager(self, *args):
         '''Called when the user reaches the root of the directory tree.'''
 
@@ -100,14 +90,6 @@ class front_end_main(MDApp):
         else:
             self.callBackend(path)
             self.screen.current = 'result'
-
-        # global outputData
-        # # processinput takes the PATH of the image, and then updates outputData of the results
-        # outputData = back_end.processInput('photo.jpg')
-        # self.screen.get_screen(name='result').ids.lb.text = outputData
-        # global inputData
-        # inputData = 'photo.jpg'
-        # return 'photo.jpg'
     
     def callBackend(self, inputData):
         # processinput takes the PATH of the image, and then updates outputData of the results

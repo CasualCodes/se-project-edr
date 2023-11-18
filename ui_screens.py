@@ -3,10 +3,10 @@ ScreenManager:
     MainScreen:
     AssessmentScreen:
     ResultsScreen:
+
 """
 
 main_screen = """
-
 <MainScreen>:
     name: 'main'
     MDLabel:
@@ -20,7 +20,6 @@ main_screen = """
 """
 
 assessment_screen = """
-
 <AssessmentScreen>:
     name: 'assess'
     MDLabel:
@@ -44,7 +43,6 @@ assessment_screen = """
 """
 
 result_screen = """
-
 <ResultsScreen>:
     name: 'result'
     MDLabel:
@@ -64,11 +62,7 @@ result_screen = """
         on_press: 
             root.manager.current = 'main'
             root.clear()
-
-
+            
 """
-'''
-root.manager.current = 'result'
-'''
 
 screens = screen_manager + main_screen + assessment_screen + result_screen
