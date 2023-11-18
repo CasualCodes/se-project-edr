@@ -95,6 +95,7 @@ class front_end_main(MDApp):
         # processinput takes the PATH of the image, and then updates outputData of the results
         outputData = back_end.processInput(inputData)
         self.screen.get_screen(name='result').ids.lb.text = outputData
+        self.screen.get_screen(name='result').ids.im.source = inputData
     
     def isEmpty(self, inputData):
         if (inputData == ""):

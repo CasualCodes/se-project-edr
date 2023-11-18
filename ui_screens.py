@@ -9,6 +9,9 @@ ScreenManager:
 main_screen = """
 <MainScreen>:
     name: 'main'
+    Image:
+		source:'data/logo.png'
+		pos_hint: {"center_x": .5, "center_y": .6}
     MDLabel:
         text: 'Welcome!'
         halign: 'center'
@@ -45,6 +48,10 @@ assessment_screen = """
 result_screen = """
 <ResultsScreen>:
     name: 'result'
+    Image:
+        id: im
+        source: 'data/logo.png'
+        pos_hint: {"center_x": .5, "center_y": .8}
     MDLabel:
         id: lb
         text: ''
