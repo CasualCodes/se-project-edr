@@ -15,39 +15,14 @@ import cv2
 import ui_screens
 import back_end
 
-inputData = ""
-outputData = StringProperty()
-
 # Screen Initialization
 class MainScreen(Screen):
     pass
-
 class AssessmentScreen(Screen):
-    def callBackEnd(self):
-        global inputData
-        print("InputData " + inputData)
-        # inputData = GET INPUT FROM CAMERA/GALLERY
-
-        #root.callBackEnd()
-
-        global outputData
-        # processinput takes the PATH of the image, and then updates outputData of the results
-        # outputData = back_end.processInput(inputData)
-
+    pass
 class ResultsScreen(Screen):
-    definition = StringProperty()
-    # update is what displays the results in result page
-    def update(self):
-        global outputData
-        self.ids.lb.text = outputData
     def clear(self):
         self.ids.lb.text = ""
-
-# Screen Manager Initializations (Preparation for builder use)
-screen_manager = ScreenManager()
-screen_manager.add_widget(MainScreen(name='main'))
-screen_manager.add_widget(AssessmentScreen(name='assess'))
-screen_manager.add_widget(ResultsScreen(name='result'))
 
 # Main Front End Execution
 class front_end_main(MDApp):
@@ -68,6 +43,7 @@ class front_end_main(MDApp):
 
         return self.screen
 
+    ## Gallery Operations ##
     def file_manager_open(self):
         self.file_manager.show('/')  # output manager to the screen
 
@@ -77,25 +53,25 @@ class front_end_main(MDApp):
         :type path: str;
         :param path: path to the selected directory or file;
         '''
-
         self.exit_manager()
-        # toast(path)
-        print(path)
-        print("Returned Path" + path)
 
-        global outputData
-        # processinput takes the PATH of the image, and then updates outputData of the results
-        outputData = back_end.processInput(path)
-        self.screen.get_screen(name='result').ids.lb.text = outputData
-        global inputData
-        inputData = path
-        return path
+        
+        if (self.isEmpty(path)):
+            return
+        else:
+            self.callBackend(path)
+            self.screen.current = 'result'
+
+        # outputData = back_end.processInput(path)
+        # self.screen.get_screen(name='result').ids.lb.text = outputData
+        # return path
 
     def exit_manager(self, *args):
         '''Called when the user reaches the root of the directory tree.'''
 
         self.file_manager.close()
 
+    ## Camera Operations ##
     def open_camera(self, *args):
         '''Called when the user clicks the capture using camera button'''
 
@@ -118,37 +94,28 @@ class front_end_main(MDApp):
         cap.release()
         cv2.destroyAllWindows()
 
-        global outputData
+        path = 'photo.jpg'
+        if (self.isEmpty(path)):
+            return
+        else:
+            self.callBackend(path)
+            self.screen.current = 'result'
+
+        # global outputData
+        # # processinput takes the PATH of the image, and then updates outputData of the results
+        # outputData = back_end.processInput('photo.jpg')
+        # self.screen.get_screen(name='result').ids.lb.text = outputData
+        # global inputData
+        # inputData = 'photo.jpg'
+        # return 'photo.jpg'
+    
+    def callBackend(self, inputData):
         # processinput takes the PATH of the image, and then updates outputData of the results
-        outputData = back_end.processInput('photo.jpg')
+        outputData = back_end.processInput(inputData)
         self.screen.get_screen(name='result').ids.lb.text = outputData
-        global inputData
-        inputData = 'photo.jpg'
-        return 'photo.jpg'
-
-
-
-
-# class MainScreen(Screen):
-#     pass
-
-# class AssessmentScreen(Screen):
-#     def callBackEnd(self):
-#         global inputData
-#         print("InputData " + inputData)
-#         # inputData = GET INPUT FROM CAMERA/GALLERY
-
-#         #root.callBackEnd()
-
-#         global outputData
-#         # processinput takes the PATH of the image, and then updates outputData of the results
-#         # outputData = back_end.processInput(inputData)
-
-# class ResultsScreen(Screen):
-#     definition = StringProperty()
-#     # update is what displays the results in result page
-#     def update(self):
-#         global outputData
-#         self.ids.lb.text = outputData
-#     def clear(self):
-#         self.ids.lb.text = ""
+    
+    def isEmpty(self, inputData):
+        if (inputData == ""):
+            return True
+        else:
+            return False

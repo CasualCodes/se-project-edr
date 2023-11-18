@@ -35,13 +35,12 @@ assessment_screen = """
         pos_hint: {"center_x": .5, "center_y": .2}
         on_press: 
             app.file_manager_open()
-            root.manager.current = 'result'
     MDRectangleFlatButton:
         text: "Upload Eye Image Using Camera"
         pos_hint: {"center_x": .5, "center_y": .1}
         on_press: 
             app.open_camera()
-            root.manager.current = 'result'
+            
 """
 
 result_screen = """
@@ -50,7 +49,7 @@ result_screen = """
     name: 'result'
     MDLabel:
         id: lb
-        text: root.definition
+        text: ''
         halign: 'center'
         valgin: 'center'
     MDRectangleFlatButton:
@@ -69,11 +68,7 @@ result_screen = """
 
 """
 '''
-MDRectangleFlatButton:
-        text: "View Result"
-        pos_hint: {"center_x": .5, "center_y": .4}
-        on_press:
-            root.update()
+root.manager.current = 'result'
 '''
 
 screens = screen_manager + main_screen + assessment_screen + result_screen
