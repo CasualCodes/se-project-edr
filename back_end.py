@@ -1,10 +1,9 @@
-# Back End
-# Imports
+# Back End Source Code
+# Import needed libraries for model integration and input processing
 import tensorflow
 import numpy as np
 import efficientnet.tfkeras
 from tensorflow.keras.preprocessing import image
-# the above imports are the things you need to run this code.. which should be ok given that the tutorials are followed
 
 ## MODEL ##
 # Load the saved model
