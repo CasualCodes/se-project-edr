@@ -33,4 +33,4 @@ def processInput(inputData):
 
 # Temporary Fix For Loading Times
 def dummy():
-    processInput("data\input\cataract_input.jpg")
+    processInput("data\input\dummy_cataract_input.jpg")
