@@ -11,7 +11,8 @@ main_screen = """
     name: 'main'
     Image:
 		source:'data/logo.png'
-		pos_hint: {"center_x": .5, "center_y": .6}
+		pos_hint: {"center_x": .5, "center_y": .7}
+        size_hint: 1, 1
     MDLabel:
         text: 'Welcome!'
         halign: 'center'
@@ -51,7 +52,8 @@ result_screen = """
     Image:
         id: im
         source: 'data/logo.png'
-        pos_hint: {"center_x": .5, "center_y": .8}
+        pos_hint: {"center_x": .5, "center_y": .7}
+        size_hint: .3, .3
     MDLabel:
         id: lb
         text: ''
