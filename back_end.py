@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing import image
 
 ## MODEL ##
 # Load the saved model
-loaded_model = tensorflow.keras.models.load_model('data\model\ignore\model.h5')
+loaded_model = tensorflow.keras.models.load_model('data\model\model.h5')
 
 # Print the class labels
 class_labels = list(["Cataract", "Conjunctivitis", "Ectropion", "Normal", "Pterygium", "Trachoma"])
