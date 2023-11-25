@@ -1,10 +1,9 @@
-# Back End
-# Imports
+# Back End Source Code
+# Import needed libraries for model integration and input processing
 import tensorflow
 import numpy as np
 import efficientnet.tfkeras
 from tensorflow.keras.preprocessing import image
-# the above imports are the things you need to run this code.. which should be ok given that the tutorials are followed
 
 ## MODEL ##
 # Load the saved model
@@ -30,3 +29,7 @@ def processInput(inputData):
     predicted_label = class_labels[predicted_class[0]] # The Output
     # Output Result
     return predicted_label
+
+# Temporary Fix For Loading Times
+def dummy():
+    processInput("data\input\dummy_cataract_input.jpg")

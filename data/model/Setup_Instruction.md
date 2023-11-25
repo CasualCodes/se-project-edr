@@ -54,3 +54,17 @@ conda install -n py310 pillow
 3. Open Jupyter Lab
 
 jupyter lab
+
+III. Other Setups for execution
+
+conda activate py310
+
+python -m pip install kivy[full]
+
+python -m pip install kivymd
+
+python -m pip install efficientnet
+
+then just do
+
+python main.py
