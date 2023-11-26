@@ -7,6 +7,7 @@ var gallery_btn = document.getElementById('gallery');
 var assess_lbl = document.getElementById('assess_lbl');
 var result_lbl = document.getElementById('result_lbl');
 var reassess_btn = document.getElementById('reassess_btn');
+var gallery_img = document.getElementById('galleryOutput');
 
 function showResults() {
     assess_lbl.style.display = 'none';
@@ -17,9 +18,21 @@ function showResults() {
     reassess_btn.style.display = "block";
 }
 
+function showAssessScreen() {
+    assess_lbl.style.display = 'block';
+    start.style.display = 'block';
+    snap.style.display = 'none';
+    gallery_btn.style.display = 'block';
+
+    canvas.style.display = "none";
+    gallery_img.style.display = "none";
+    result_lbl.style.display = "none";
+    reassess_btn.style.display = "none";
+}
+
 var loadFile = function (event) {
-    var image = document.getElementById('output');
-    image.src = URL.createObjectURL(event.target.files[0]);
+    gallery_img.src = URL.createObjectURL(event.target.files[0]);
+    gallery_img.style.display = 'block';
     showResults();
 };
 
@@ -55,5 +68,9 @@ snap.addEventListener("click", function () {
     canvas.style.display = 'block';
     // go to results screen
     showResults();
+});
+
+reassess_btn.addEventListener("click", function () {
+    showAssessScreen();
 });
 
