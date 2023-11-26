@@ -9,7 +9,7 @@
 
 <body>
 
-    <input type="file" id="fileInput" style="display: none;" />
+    <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)" style="display: none;">
     <video id="video" width="640" height="480" autoplay style="display: none;"></video>
     
 
@@ -21,6 +21,7 @@
 
     <!-- insert image -->
     <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+    <img id="output" />
     <p id="result_lbl" style="display: none;">Assessment Result</p>
     <button id="reassess_btn" type="button" style="display: none;">Re-Assess</button>
     <button id="main_btn" type="button" onclick="location.href='index.html'">Main</button>

@@ -7,6 +7,18 @@ var gallery_btn = document.getElementById('gallery');
 var assess_lbl = document.getElementById('assess_lbl');
 var result_lbl = document.getElementById('result_lbl');
 var reassess_btn = document.getElementById('reassess_btn');
+var loadFile = function (event) {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+function showResults() {
+    assess_lbl.style.display = 'none';
+    start.style.display = 'none';
+    gallery_btn.style.display = 'none';
+    result_lbl.style.display = "block";
+    reassess_btn.style.display = "block";
+}
 
 function toggleVisibility(source, target) {
     var target_btn = document.getElementById(target);
@@ -38,10 +50,12 @@ snap.addEventListener("click", function () {
     context.drawImage(video, 0, 0, 640, 480);
     video.style.display = 'none';
     canvas.style.display = 'block';
-    assess_lbl.style.display = 'none';
-    start.style.display = 'none';
-    gallery_btn.style.display = 'none';
-    result_lbl.style.display = "block";
-    reassess_btn.style.display = "block";
+    // go to results screen
+    showResults();
+    // assess_lbl.style.display = 'none';
+    // start.style.display = 'none';
+    // gallery_btn.style.display = 'none';
+    // result_lbl.style.display = "block";
+    // reassess_btn.style.display = "block";
 
 });
