@@ -11,13 +11,21 @@
 
     <input type="file" id="fileInput" style="display: none;" />
     <video id="video" width="640" height="480" autoplay style="display: none;"></video>
-    <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+    
 
-    <p>Assess</p>
+    <p id="assess_lbl">Assess</p>
     <button type="button" id="start">Camera</button>
     <button type="button" id="snap" style="display: none;">Camera</button>
-    <button type="button" onclick="document.getElementById('fileInput').click()">Gallery</button>
-    <button type="button" onclick="location.href='index.html'">Main</button>
+    <button type="button" id="gallery" onclick="document.getElementById('fileInput').click()">Gallery</button>
+
+
+    <!-- insert image -->
+    <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+    <p id="result_lbl" style="display: none;">Assessment Result</p>
+    <button id="reassess_btn" type="button" style="display: none;">Re-Assess</button>
+    <button id="main_btn" type="button" onclick="location.href='index.html'">Main</button>
+
+    
 
     <script src="script.js"></script>
 
