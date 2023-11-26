@@ -15,6 +15,7 @@ var loadFile = function (event) {
 function showResults() {
     assess_lbl.style.display = 'none';
     start.style.display = 'none';
+    snap.style.display = 'none';
     gallery_btn.style.display = 'none';
     result_lbl.style.display = "block";
     reassess_btn.style.display = "block";
