@@ -7,10 +7,6 @@ var gallery_btn = document.getElementById('gallery');
 var assess_lbl = document.getElementById('assess_lbl');
 var result_lbl = document.getElementById('result_lbl');
 var reassess_btn = document.getElementById('reassess_btn');
-var loadFile = function (event) {
-    var image = document.getElementById('output');
-    image.src = URL.createObjectURL(event.target.files[0]);
-};
 
 function showResults() {
     assess_lbl.style.display = 'none';
@@ -20,6 +16,12 @@ function showResults() {
     result_lbl.style.display = "block";
     reassess_btn.style.display = "block";
 }
+
+var loadFile = function (event) {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+    showResults();
+};
 
 function toggleVisibility(source, target) {
     var target_btn = document.getElementById(target);
@@ -53,10 +55,5 @@ snap.addEventListener("click", function () {
     canvas.style.display = 'block';
     // go to results screen
     showResults();
-    // assess_lbl.style.display = 'none';
-    // start.style.display = 'none';
-    // gallery_btn.style.display = 'none';
-    // result_lbl.style.display = "block";
-    // reassess_btn.style.display = "block";
-
 });
+
