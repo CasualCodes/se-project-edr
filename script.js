@@ -50,12 +50,14 @@ function toggleVisibility(source, target) {
 
 // Get access to the camera!
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    var stream;
     start.addEventListener("click", function () {
-        navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function (mediaStream) {
             toggleVisibility('start', 'snap');
-            video.srcObject = stream;
+            video.srcObject = mediaStream;
             video.play();
             video.style.display = 'block';
+            stream = mediaStream; // keep a reference to the stream
         });
     });
 }
@@ -66,6 +68,11 @@ snap.addEventListener("click", function () {
     context.drawImage(video, 0, 0, 640, 480);
     video.style.display = 'none';
     canvas.style.display = 'block';
+    if (stream) {
+        stream.getTracks().forEach(function (track) {
+            track.stop();
+        });
+    }
     // go to results screen
     showResults();
 });
