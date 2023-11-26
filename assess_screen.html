@@ -1,15 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assess</title>
 </head>
+
 <body>
-    <p>Assess</p>
-    <button type="button">Camera</button>
+
     <input type="file" id="fileInput" style="display: none;" />
+    <video id="video" width="640" height="480" autoplay style="display: none;"></video>
+    <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+
+    <p>Assess</p>
+    <button type="button" id="start">Camera</button>
+    <button type="button" id="snap" style="display: none;">Camera</button>
     <button type="button" onclick="document.getElementById('fileInput').click()">Gallery</button>
     <button type="button">Main</button>
+
+    <script>
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var start = document.getElementById('start');
+        var snap = document.getElementById('snap');
+
+        function toggleVisibility(source, target) {
+            var target_btn = document.getElementById(target);
+            var source_btn = document.getElementById(source);
+            if (target_btn.style.display === "none") {
+                target_btn.style.display = "block";
+                source_btn.style.display = "none";
+            } else {
+                target_btn.style.display = "none";
+                source_btn.style.display = "block";
+            }
+        }
+
+        // Get access to the camera!
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            start.addEventListener("click", function () {
+                navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+                    toggleVisibility('start', 'snap');
+                    video.srcObject = stream;
+                    video.play();
+                    video.style.display = 'block';
+                });
+            });
+        }
+
+        // Trigger photo take
+        snap.addEventListener("click", function () {
+            toggleVisibility('snap', 'start');
+            context.drawImage(video, 0, 0, 640, 480);
+            video.style.display = 'none';
+            canvas.style.display = 'block';
+        });
+
+    </script>
+
 </body>
+
 </html>
