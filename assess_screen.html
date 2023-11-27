@@ -11,7 +11,7 @@
 
 <body>
 
-    <div>
+    <div class="media">
         <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)" style="display: none;">
         <video id="video" width="640" height="480" autoplay style="display: none;"></video>
     </div>
@@ -21,9 +21,7 @@
         <button class="button" type="button" id="start">Camera</button>
         <button class="button" type="button" id="snap" style="display: none;">Camera</button>
         <button class="button" type="button" id="gallery" onclick="document.getElementById('fileInput').click()">Gallery</button>
-    </div>
 
-    <div class="container">
         <!-- insert image -->
         <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
         <img id="galleryOutput" />

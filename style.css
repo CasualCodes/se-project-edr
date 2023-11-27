@@ -18,15 +18,23 @@ body
     margin-top: 5dvi;
     border-width: 3px;
     border-bottom-width: 10px;
+
+    /*flexbox attempt*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .subcontainer
 {
-    margin-top: 10dvi;
+    margin-top: 0;
 }
 
 .button
 {
+    width: 20%;
+    align-self: center;
+    margin-top: 1%;
     background-color: #000000;
     color: #ffffff;
     padding: 10px 15px;
@@ -37,4 +45,17 @@ body
 {
     background: #007fff;
     color: #ffffff;
+}
+
+.media
+{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width:30%;
+    height:30%;
+
+    /*flexbox attempt*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
