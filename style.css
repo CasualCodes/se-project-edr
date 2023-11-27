@@ -49,13 +49,12 @@ body
 
 .media
 {
-    margin-bottom: 0;
-    padding-bottom: 0;
     width:30%;
     height:30%;
-
+    margin: auto;
     /*flexbox attempt*/
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    
+    justify-content:center;
+
 }
