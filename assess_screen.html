@@ -5,29 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AISight - Assess</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
 
-    <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)" style="display: none;">
-    <video id="video" width="640" height="480" autoplay style="display: none;"></video>
+    <div>
+        <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)" style="display: none;">
+        <video id="video" width="640" height="480" autoplay style="display: none;"></video>
+    </div>
+
+    <div class="container">
+        <p class="subcontainer" id="assess_lbl">Assess</p>
+        <button class="button" type="button" id="start">Camera</button>
+        <button class="button" type="button" id="snap" style="display: none;">Camera</button>
+        <button class="button" type="button" id="gallery" onclick="document.getElementById('fileInput').click()">Gallery</button>
+    </div>
+
+    <div class="container">
+        <!-- insert image -->
+        <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+        <img id="galleryOutput" />
+        <p id="result_lbl" style="display: none;">Assessment Result</p>
+        <button class="button" id="reassess_btn" type="button" style="display: none;">Re-Assess</button>
+        <button class="button" id="main_btn" type="button" onclick="location.href='index.html'">Main</button>
+    </div>
     
-
-    <p id="assess_lbl">Assess</p>
-    <button type="button" id="start">Camera</button>
-    <button type="button" id="snap" style="display: none;">Camera</button>
-    <button type="button" id="gallery" onclick="document.getElementById('fileInput').click()">Gallery</button>
-
-
-    <!-- insert image -->
-    <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
-    <img id="galleryOutput" />
-    <p id="result_lbl" style="display: none;">Assessment Result</p>
-    <button id="reassess_btn" type="button" style="display: none;">Re-Assess</button>
-    <button id="main_btn" type="button" onclick="location.href='index.html'">Main</button>
-
-    
-
     <script src="script.js"></script>
 
 </body>
