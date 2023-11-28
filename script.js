@@ -32,8 +32,8 @@ function showAssessScreen() {
 
 var loadFile = function (event) {
     gallery_img.src = URL.createObjectURL(event.target.files[0]);
-    gallery_img.style.maxWidth='60%';
-    gallery_img.style.maxHeight='60%';
+    gallery_img.style.maxWidth='45%';
+    gallery_img.style.maxHeight='45%';
     gallery_img.style.margin='auto';
     gallery_img.style.display = 'block';
     showResults();
