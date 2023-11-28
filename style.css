@@ -50,8 +50,8 @@ body
 
 .media
 {
-    width:30%;
-    height:30%;
+    width:20%;
+    height:20%;
     margin: auto;
     /*flexbox attempt*/
     display: flex;
