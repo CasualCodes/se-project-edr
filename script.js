@@ -57,6 +57,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             video.srcObject = mediaStream;
             video.play();
             video.style.display = 'block';
+            gallery_btn.style.display ='none';
             stream = mediaStream; // keep a reference to the stream
         });
     });
