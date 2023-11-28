@@ -39,6 +39,7 @@ body
     color: #ffffff;
     padding: 10px 15px;
     border: none;
+    border-radius: 2rem;
 }
 
 .button:hover
