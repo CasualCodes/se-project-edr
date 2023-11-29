@@ -12,3 +12,7 @@ def disclaimer(request):
 def assess(request):
     context = {}
     return render(request, "edr/assess_screen.html", context)
+
+def list(request):
+    context = {}
+    return render(request, "edr/list_screen.html", context)
