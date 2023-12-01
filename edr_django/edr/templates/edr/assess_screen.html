@@ -13,7 +13,33 @@
 <body>
 
     <div class="media">
-        <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)" style="display: none;">
+        <!-- List of uploaded images -->
+        {% if images %}
+            All images in the database:
+            <ul>
+                {% for image in images %}
+                    <li><a href="{{ image.imgfile.url }}">{{ image.imgfile.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No images.</p>
+        {% endif %}
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url "my-view" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ message }}
+            <p>{{ form.non_field_errors }}</p>
+
+            <p>{{ form.imgfile.label_tag }} {{ form.imgfile.help_text }}</p>
+
+            <p>
+                {{ form.imgfile.errors }}
+                {{ form.imgfile }}
+            </p>
+            <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)" style="display: none;">
+
+            <p><input type="submit" value="Upload"/></p>
+        </form>
         <video id="video" width="640" height="480" autoplay style="display: none;"></video>
     </div>
 
