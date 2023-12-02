@@ -13,15 +13,15 @@ def disclaimer(request):
     context = {}
     return render(request, "edr/disclaimer_screen.html", context)
 
-def assess(request):
-    context = {}
-    return render(request, "edr/assess_screen.html", context)
+# def assess(request):
+#     context = {}
+#     return render(request, "edr/assess_screen.html", context)
 
 def list(request):
     context = {}
     return render(request, "edr/list_screen.html", context)
 
-def my_view(request):
+def assess(request):
     print(f"Great! You're using Python 3.6+. If you fail here, use the right version.")
     message = 'Upload as many files as you want!'
     # Handle file upload
