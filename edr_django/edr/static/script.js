@@ -9,6 +9,10 @@ var result_lbl = document.getElementById('result_lbl');
 var reassess_btn = document.getElementById('reassess_btn');
 var gallery_img = document.getElementById('galleryOutput');
 
+var id_imgfile = document.getElementById('id_imgfile'); // choose file field
+id_imgfile.style.display = 'none';
+var upload_btn = document.getElementById('upload_btn');
+
 function showResults() {
     assess_lbl.style.display = 'none';
     start.style.display = 'none';
@@ -38,6 +42,12 @@ var loadFile = function (event) {
     gallery_img.style.display = 'block';
     showResults();
 };
+
+id_imgfile.addEventListener('change', function(event) {
+    // upload_btn.click();
+    loadFile(event);
+});
+
 
 function toggleVisibility(source, target) {
     var target_btn = document.getElementById(target);
@@ -84,4 +94,3 @@ snap.addEventListener("click", function () {
 reassess_btn.addEventListener("click", function () {
     showAssessScreen();
 });
-

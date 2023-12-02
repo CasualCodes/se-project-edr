@@ -19,7 +19,7 @@
             {{ form.imgfile }}
         </p>
 
-        <p><input type="submit" value="Upload" /></p>
+        <p><input type="submit" value="Upload" id="upload_btn"/></p>
     </form>
 
     <div class="media">
@@ -33,15 +33,8 @@
         <button class="button" type="button" id="start"> <img src="data/camera.png" alt="Camera"> </button>
         <button class="button" type="button" id="snap" style="display: none;"><img src="data/camera.png"
                 alt="Camera"></button>
-        <button class="button" type="button" id="gallery" onclick="document.getElementById('fileInput').click()"><img
+        <button class="button" type="button" id="gallery" onclick="document.getElementById('id_imgfile').click()"><img
                 src="data/gallery.png" alt="Gallery"> Upload</button>
-
-        <!-- insert image -->
-        <canvas class="media" id="canvas" width="640" height="480" style="display: none;"></canvas>
-        <img id="galleryOutput" />
-        <h3 id="result_lbl" style="display: none;">Assessment Result</h3>
-        <button class="button" id="reassess_btn" type="button" style="display: none;">Re-Assess</button>
-        <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
     </div>
 
     <script src="{% static 'script.js' %}"></script>

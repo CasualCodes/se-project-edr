@@ -21,6 +21,10 @@ def list(request):
     context = {}
     return render(request, "edr/list_screen.html", context)
 
+def results(request):
+    context = {}
+    return render(request, "edr/results_screen.html", context)
+
 def assess(request):
     print(f"Great! You're using Python 3.6+. If you fail here, use the right version.")
     message = 'Upload as many files as you want!'
