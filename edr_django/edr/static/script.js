@@ -45,7 +45,7 @@ var upload_btn = document.getElementById('upload_btn');
 
 id_imgfile.addEventListener('change', function(event) {
     upload_btn.click();
-    document.location.href='/edr/results'
+    document.location.href='/edr/results/' + id_imgfile.files[0].name
     // loadFile(event);
 });
 
