@@ -11,43 +11,30 @@
 </head>
 
 <body>
+    <!-- Upload form. Note enctype attribute! -->
+    <form action="{% url "assess" %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <p>
+            {{ form.imgfile }}
+        </p>
+
+        <p><input type="submit" value="Upload" /></p>
+    </form>
 
     <div class="media">
-        <!-- List of uploaded images -->
-        {% if images %}
-            All images in the database:
-            <ul>
-                {% for image in images %}
-                    <li><a href="{{ image.imgfile.url }}">{{ image.imgfile.name }}</a></li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No images.</p>
-        {% endif %}
-        <!-- Upload form. Note enctype attribute! -->
-        <form action="{% url "assess" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ message }}
-            <p>{{ form.non_field_errors }}</p>
-
-            <p>{{ form.imgfile.label_tag }} {{ form.imgfile.help_text }}</p>
-
-            <p>
-                {{ form.imgfile.errors }}
-                {{ form.imgfile }}
-            </p>
-
-            <p><input type="submit" value="Upload"/></p>
-        </form>
-        <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)" style="display: none;">
+        <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)"
+            style="display: none;">
         <video id="video" width="640" height="480" autoplay style="display: none;"></video>
     </div>
 
     <div class="container">
         <h3 class="subcontainer" id="assess_lbl">Assess</h3>
         <button class="button" type="button" id="start"> <img src="data/camera.png" alt="Camera"> </button>
-        <button class="button" type="button" id="snap" style="display: none;"><img src="data/camera.png" alt="Camera"></button>
-        <button class="button" type="button" id="gallery" onclick="document.getElementById('fileInput').click()"><img src="data/gallery.png" alt="Gallery"> Upload</button>
+        <button class="button" type="button" id="snap" style="display: none;"><img src="data/camera.png"
+                alt="Camera"></button>
+        <button class="button" type="button" id="gallery" onclick="document.getElementById('fileInput').click()"><img
+                src="data/gallery.png" alt="Gallery"> Upload</button>
 
         <!-- insert image -->
         <canvas class="media" id="canvas" width="640" height="480" style="display: none;"></canvas>
@@ -56,7 +43,7 @@
         <button class="button" id="reassess_btn" type="button" style="display: none;">Re-Assess</button>
         <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
     </div>
-    
+
     <script src="{% static 'script.js' %}"></script>
 
 </body>
