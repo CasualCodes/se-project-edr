@@ -32,7 +32,7 @@ def assess(request):
             newimg.save()
 
             # Redirect to the image list after POST
-            return redirect('my-view')
+            return redirect('assess')
         else:
             message = 'The form is not valid. Fix the following error:'
     else:

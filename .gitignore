@@ -7,3 +7,5 @@ ignore
 archive
 data/model/model.h5
 .env
+*.bmp
+db.sqlite3
