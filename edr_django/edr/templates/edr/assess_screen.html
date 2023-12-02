@@ -23,8 +23,8 @@
     </form>
 
     <div class="media">
-        <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)"
-            style="display: none;">
+        <!-- <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)"
+            style="display: none;"> -->
         <video id="video" width="640" height="480" autoplay style="display: none;"></video>
     </div>
 
@@ -35,6 +35,7 @@
                 alt="Camera"></button>
         <button class="button" type="button" id="gallery" onclick="document.getElementById('id_imgfile').click()"><img
                 src="data/gallery.png" alt="Gallery"> Upload</button>
+        <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
     </div>
 
     <script src="{% static 'script.js' %}"></script>
