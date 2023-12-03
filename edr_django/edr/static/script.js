@@ -10,7 +10,7 @@ var assess_lbl = document.getElementById('assess_lbl');
 // var gallery_img = document.getElementById('galleryOutput');
 
 var id_imgfile = document.getElementById('id_imgfile'); // choose file field
-id_imgfile.style.display = 'none';
+// id_imgfile.style.display = 'none';
 var upload_btn = document.getElementById('upload_btn');
 
 // function showResults() {
