@@ -1,13 +1,13 @@
 body
 {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: normal;
 
     line-height: 1.6em;
     margin: 0;
 
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     color: #000000;
     text-align: center;
 }
@@ -16,10 +16,12 @@ body
 {
     padding: 20px;
     margin-top: 5dvi;
+    border-radius: 2rem;
+
+    /*background-color: #f5f5fa;*/
     border-width: 3px;
     border-bottom-width: 10px;
 
-    /*flexbox attempt*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,7 +34,19 @@ body
 
 .button
 {
-    width: 25%;
+    width: 30%;
+    align-self: center;
+    margin-top: 1%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 2rem;
+}
+
+.buttonBlue
+{
+    width: 30%;
     align-self: center;
     margin-top: 1%;
     background-color: #000000;
@@ -48,14 +62,19 @@ body
     color: #ffffff;
 }
 
+.buttonBlue:hover
+{
+    background: #38b6ff;
+    color: #ffffff;
+}
+
 .media
 {
     width:45%;
     height:45%;
     margin: auto;
-    /*flexbox attempt*/
+
     display: flex;
-    
     justify-content:center;
 
 }
