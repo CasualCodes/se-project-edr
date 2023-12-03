@@ -23,7 +23,6 @@
     </form>
 
     <script>
-        console.log('Got here');
         document.getElementById('id_imgfile').style.display = 'none';
     </script>
 
@@ -38,6 +37,12 @@
         <button class="button" type="button" id="start"> <img src="data/camera.png" alt="Camera"> </button>
         <button class="button" type="button" id="snap" style="display: none;"><img src="data/camera.png"
                 alt="Camera"></button>
+        <script>
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                document.getElementById('start').style.display = 'none';
+            }
+        </script>
         <button class="button" type="button" id="gallery" onclick="document.getElementById('id_imgfile').click()"><img
                 src="data/gallery.png" alt="Gallery"> Upload</button>
         <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
