@@ -5,6 +5,21 @@ from .models import Image
 from .forms import ImageForm
 
 
+# Import needed libraries for model integration and input processing
+import tensorflow
+import numpy as np
+import efficientnet.tfkeras
+from tensorflow.keras.preprocessing import image
+
+import os
+
+## MODEL ##
+# Load the saved model
+loaded_model = tensorflow.keras.models.load_model('edr/model.h5')
+
+# Print the class labels
+class_labels = list(["Cataract", "Conjunctivitis", "Ectropion", "Normal", "Pterygium", "Trachoma"])
+
 def index(request):
     context = {}
     return render(request, "edr/index.html", context)
@@ -22,7 +37,23 @@ def list(request):
     return render(request, "edr/list_screen.html", context)
 
 def results(request, filename):
-    context = {'image': filename}
+    ## DATA PREPROCESS ##
+    test_image_path = 'media/'+filename
+    img = image.load_img(test_image_path, target_size=(256, 256))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array /= 255.  # Normalize the image
+
+    ## INPUT TO MODEL ##
+    prediction = loaded_model.predict(img_array)
+
+    ## RESULT ##
+    # Get Result
+    predicted_class = np.argmax(prediction, axis=-1)
+    predicted_label = class_labels[predicted_class[0]] # The Output
+    # Output Result
+    # return predicted_label
+    context = {'image': filename, 'predicted_label': predicted_label}
     return render(request, "edr/results_screen.html", context)
 
 def assess(request):

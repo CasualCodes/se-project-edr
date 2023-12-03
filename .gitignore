@@ -10,3 +10,4 @@ data/model/model.h5
 *.bmp
 *.sqlite3*
 *.jpg
+*.h5
