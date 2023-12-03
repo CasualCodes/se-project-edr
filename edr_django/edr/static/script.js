@@ -1,6 +1,6 @@
 var video = document.getElementById('video');
-// var canvas = document.getElementById('canvas');
-// var context = canvas.getContext('2d');
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
 var start = document.getElementById('start');
 var snap = document.getElementById('snap');
 var gallery_btn = document.getElementById('gallery');
@@ -102,7 +102,7 @@ snap.addEventListener("click", function () {
         });
     }
     // go to results screen
-    showResults();
+    // showResults();
 });
 
 // reassess_btn.addEventListener("click", function () {
