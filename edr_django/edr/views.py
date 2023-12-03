@@ -21,8 +21,8 @@ def list(request):
     context = {}
     return render(request, "edr/list_screen.html", context)
 
-def results(request):
-    context = {}
+def results(request, filename):
+    context = {'image': filename}
     return render(request, "edr/results_screen.html", context)
 
 def assess(request):
@@ -36,7 +36,7 @@ def assess(request):
             newimg.save()
 
             # Redirect to the image list after POST
-            return redirect('assess')
+            return redirect('results/'+newimg.imgfile.name)
         else:
             message = 'The form is not valid. Fix the following error:'
     else:

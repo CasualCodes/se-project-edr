@@ -45,8 +45,21 @@ var upload_btn = document.getElementById('upload_btn');
 
 id_imgfile.addEventListener('change', function(event) {
     upload_btn.click();
-    document.location.href='/edr/results/' + id_imgfile.files[0].name
-    // loadFile(event);
+    
+    // var file = id_imgfile.files[0];
+    // var formData = new FormData();
+    // formData.append('file', file);
+
+    // fetch('/media/images', { // replace with your upload endpoint
+    //     method: 'POST',
+    //     body: formData
+    // })
+    // .then(response => response.json())
+    // .then(success => {
+    //     // redirects after the server responds that the file upload is complete
+    //     document.location.href='/edr/results/' + file.name;
+    // })
+    // .catch(error => console.log(error));
 });
 
 
