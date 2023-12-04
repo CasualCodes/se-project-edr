@@ -10,44 +10,45 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 
-<body>
-    <!-- Upload form. Note enctype attribute! -->
-    <form action="{% url "assess" %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        <p>
-            {{ form.imgfile }}
-        </p>
-
-        <p><input type="submit" value="Upload" id="upload_btn" style="display: none;"/></p>
-    </form>
-
-    <script>
-        document.getElementById('id_imgfile').style.display = 'none';
-    </script>
-
-    <div class="media">
-        <!-- <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)"
-            style="display: none;"> -->
-        <video id="video" width="640" height="480" autoplay style="display: none;"></video>
-        <canvas class="media" id="canvas" width="640" height="480" style="display: none;"></canvas>
-    </div>
-
+<div>
     <div class="container">
-        <h3 class="subcontainer" id="assess_lbl">Assess</h3>
-        <button class="buttonBlue" type="button" id="start"> Camera </button>
-        <button class="button" type="button" id="snap" style="display: none;"><img src="data/camera.png"
-                alt="Camera"></button>
-        <script>
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            if (isMobile) {
-                document.getElementById('start').style.display = 'none';
-            }
-        </script>
-        <button class="buttonBlue" type="button" id="gallery" onclick="document.getElementById('id_imgfile').click()"> <img style="vertical-align: middle;" src="{% static 'camera.png' %}" alt="" width="30" height="30"> <span style="vertical-align: middle;"> Upload </span> </button>
-        <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
-    </div>
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url "assess" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
+            <p>
+                {{ form.imgfile }}
+            </p>
+
+            <p><input type="submit" value="Upload" id="upload_btn" style="display: none;"/></p>
+        </form>
+
+        <script>
+            document.getElementById('id_imgfile').style.display = 'none';
+        </script>
+
+        <div class="media">
+            <!-- <input type="file" accept="image/*" name="image" id="fileInput" onchange="loadFile(event)"
+                style="display: none;"> -->
+            <video id="video" width="640" height="480" autoplay style="display: none;"></video>
+            <canvas class="media" id="canvas" width="640" height="480" style="display: none;"></canvas>
+        </div>
+
+        <div class="container">
+            <h3 class="subcontainer" id="assess_lbl">Assess</h3>
+            <button class="buttonBlue" type="button" id="start"> Camera </button>
+            <button class="button" type="button" id="snap" style="display: none;"><img src="data/camera.png"
+                    alt="Camera"></button>
+            <script>
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                if (isMobile) {
+                    document.getElementById('start').style.display = 'none';
+                }
+            </script>
+            <button class="buttonBlue" type="button" id="gallery" onclick="document.getElementById('id_imgfile').click()"> <img style="vertical-align: middle;" src="{% static 'camera.png' %}" alt="" width="30" height="30"> <span style="vertical-align: middle;"> Upload </span> </button>
+            <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
+        </div>
+    </div>
     <script src="{% static 'script.js' %}"></script>
 
 </body>

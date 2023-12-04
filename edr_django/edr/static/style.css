@@ -7,18 +7,19 @@ body
     line-height: 1.6em;
     margin: 0;
 
-    background-color: #ffffff;
+    background-color: #007fff;
     color: #000000;
     text-align: center;
 }
 
 .container
 {
-    padding: 20px;
-    margin-top: 5dvi;
+    padding: 6dvi;
+    margin-top: 4%;
+    margin-bottom: 4%;
     border-radius: 2rem;
 
-    /*background-color: #f5f5fa;*/
+    background-color: #f5f5fa;
     border-width: 3px;
     border-bottom-width: 10px;
 
@@ -81,8 +82,8 @@ body
 
 .logo
 {
-    width:175px;
-    height:175px;
+    width:150px;
+    height:150px;
     margin: auto;
     
     display: flex;
