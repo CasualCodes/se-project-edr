@@ -40,10 +40,11 @@
             <button class="button" type="button" id="snap" style="display: none;"><img src="data/camera.png"
                     alt="Camera"></button>
             <script>
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                if (isMobile) {
-                    document.getElementById('start').style.display = 'none';
-                }
+                // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                // if (isMobile) {
+                //     document.getElementById('start').style.display = 'none';
+                // }
+                document.getElementById('start').style.display = 'none';
             </script>
             <button class="buttonBlue" type="button" id="gallery" onclick="document.getElementById('id_imgfile').click()"> <img style="vertical-align: middle;" src="{% static 'camera.png' %}" alt="" width="30" height="30"> <span style="vertical-align: middle;"> Upload </span> </button>
             <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>

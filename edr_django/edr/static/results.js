@@ -1,4 +1,6 @@
 var galleryOutput = document.getElementById('galleryOutput');
-gallery_img.style.maxWidth='45%';
-gallery_img.style.maxHeight='45%';
-gallery_img.style.margin='auto';
+window.addEventListener("DOMContentLoaded", () => {
+    galleryOutput.style.maxWidth='45%';
+    galleryOutput.style.maxHeight='45%';
+    galleryOutput.style.margin='auto';
+});
