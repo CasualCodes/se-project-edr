@@ -9,5 +9,5 @@ data/model/model.h5
 .env
 *.bmp
 *.sqlite3*
-*.jpg
+*.jp*g
 *.h5
