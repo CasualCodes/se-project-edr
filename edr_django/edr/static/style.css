@@ -7,7 +7,7 @@ body
     line-height: 1.6em;
     margin: 0;
 
-    background-color: #007fff;
+    background-color: #f5f5fa;
     color: #000000;
     text-align: center;
 }
@@ -15,6 +15,7 @@ body
 .container
 {
     padding: 6dvi;
+    padding-bottom:40dvi;
     margin-top: 4%;
     margin-bottom: 4%;
     border-radius: 2rem;
@@ -83,7 +84,7 @@ body
 .logo
 {
     width:150px;
-    height:150px;
+    height:200px;
     margin: auto;
     
     display: flex;
