@@ -16,7 +16,32 @@ Sy, Jan Wilhelm T.
 
 We are all new to using GitHub, even more so in handling a Software Engineering project. This README.md document is all about informing each of us what we need to setup in order to do the project.
 
+## Notes on Environment Variables
+To allow us to view the site on phone and
+prevent including id addresses in commits:
+Run this in cmd:
+> pip install django-environ
+Create a '.env' file in 'edr-django/edr-django'
+Find your machine's ip address by running in cmd:
+> ipconfig
+It will output something like:
+> Wireless LAN adapter Wi-Fi: 
+> Connection-specific DNS Suffix  . :
+> Link-local IPv6 Address . . . . . : (alphanumeric stuff)
+> IPv4 Address. . . . . . . . . . . : 192.168.x.x
+> Subnet Mask . . . . . . . . . . . : (255 numeric stuff)
+> Default Gateway . . . . . . . . . : (192 168 numeric stuff)
+The IPv4 Address is the address of your machine on the network
+Write this line in the .env file:
+> ALLOWED_HOSTS=localhost,127.0.0.1,192.168.x.x
+Replace x.x with the last two numbers of your machine's ip address
 
+Now run this in the outer edr-django directory:
+> python manage.py runserver 0.0.0.0:8000
+
+On your machine, enter 127.0.0.1:8000 in your browser.
+On phone or other computers connected to the same network,
+enter <IP address>:8000
 
 ## Step-by-Step
 

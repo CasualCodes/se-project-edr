@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISight - List of Diseases</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h3>List of Diseases Recognized</h3>
+        </div>
+        <p>Conjunctivitis</p>
+        <p>Cataracts</p>
+        <p>Pterygium</p>
+        <p>Trachoma</p>
+        <p>Ectropion</p>
+
+        <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

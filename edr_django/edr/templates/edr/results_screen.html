@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISight - Results</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <canvas class="media" id="canvas" width="640" height="480" style="display: none;"></canvas>
+        <img id="galleryOutput" src="/media/{{ image }}" maxWidth="45%" maxHeight="45%" margin="auto"/>
+        <h3 id="result_lbl"">{{ predicted_label }}</h3>
+        <button class="button" id="reassess_btn" type="button" onclick="location.href='/edr/assess'">Re-Assess</button>
+        <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
+    </div>
+
+    <script src="{% static 'results.js' %}"></script>
+</body>
+</html>
