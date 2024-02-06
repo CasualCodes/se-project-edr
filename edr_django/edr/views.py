@@ -61,6 +61,9 @@ def list(request):
     return render(request, "edr/list_screen.html", context)
 
 def results(request, filename):
+    extracted = False
+    displayed_image = ""
+    
     ## DATA PREPROCESS ##
     test_image_path = 'media/'+filename
     img_list = glob.glob(test_image_path)
@@ -72,17 +75,32 @@ def results(request, filename):
         print(file)     #just stop here to see all file names printed
         img= cv2.imread(file, 1)  #now, we can read each file since we have the full path
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        eyes = eye_cascade.detectMultiScale(gray, 1.3, 5)
+        # eyes = eye_cascade.detectMultiScale(gray, 1.3, 5)
+        eyes, rejectLevels, levelWeights = eye_cascade.detectMultiScale3(gray, scaleFactor=1.3,
+                                                     minNeighbors=5,
+                                                     minSize=(10, 10),
+                                                     flags=cv2.CASCADE_SCALE_IMAGE,
+                                                     outputRejectLevels=True)
         try:
-            for (x,y,w,h) in eyes:
-                roi_gray = gray[y:y+w, x:x+w]
-                roi_color = img[y:y+h, x:x+w] 
+            # for (x,y,w,h) in eyes:
+            #     roi_gray = gray[y:y+w, x:x+w]
+            #     roi_color = img[y:y+h, x:x+w] 
+            x, y, w, h = eyes[np.argmax(levelWeights)]
+            print()
+            print(levelWeights)
+            print(np.argmin(levelWeights))
+            print(levelWeights[np.argmax(levelWeights)])
+            print()
+            roi_gray = gray[y:y+w, x:x+w]
+            roi_color = img[y:y+h, x:x+w]
             resized = cv2.resize(roi_color, (128,128))
             cv2.imwrite("media/extracted.jpg", resized)
             test_image_path = "media/extracted.jpg"
+            extracted = True
         except:
             print("EXTRACTION WENT WRONG. HEHE")
             traceback.print_exc()
+            extracted = False
 
 
     img = image.load_img(test_image_path, target_size=(256, 256))
@@ -99,7 +117,12 @@ def results(request, filename):
     predicted_label = class_labels[predicted_class[0]] # The Output
     # Output Result
     # return predicted_label
-    context = {'image': "extracted.jpg", 'predicted_label': predicted_label}
+    if extracted:
+        displayed_image = "extracted.jpg"
+    else:
+        displayed_image = filename
+    print(displayed_image)
+    context = {'image': displayed_image, 'predicted_label': predicted_label}
     return render(request, "edr/results_screen.html", context)
 
 def assess(request):
