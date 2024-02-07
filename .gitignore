@@ -1,13 +1,9 @@
-mainenv
-KivyMD-Basics-master
 __pycache__
 .ipynb_checkpoints
-ignore
 *photo*
-archive
-data/model/model.h5
 .env
 *.bmp
 *.sqlite3*
 *.jp*g
 *.h5
+ignore

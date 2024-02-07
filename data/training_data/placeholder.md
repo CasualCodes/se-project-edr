@@ -1,1 +1,0 @@
-training data is found in our gdrive. they are too numerous and too large to be committed.
