@@ -61,46 +61,77 @@ def list(request):
     return render(request, "edr/list_screen.html", context)
 
 def results(request, filename):
-    extracted = False
+    '''
+    # PSEUDOCODE
+    do face_extraction on image
+    if face_extracted:
+        image = extracted face
+    else if no face_extracted:
+        write disclaimer for user
+    
+    do eye_extraction on image
+    if eye_extracted:
+        image = extracted eye
+    else if no eye_extracted:
+        write disclaimer for user
+    '''
+    
+    extracted_face = False
+    extracted_eye = False
     displayed_image = ""
     
     ## DATA PREPROCESS ##
     test_image_path = 'media/'+filename
     img_list = glob.glob(test_image_path)
+    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
 
-    #Extract faces from a subset of images to be used for training.
-    #Resize to 128x128
     for file in img_list:
-        print(file)     #just stop here to see all file names printed
-        img= cv2.imread(file, 1)  #now, we can read each file since we have the full path
+        print(file)     # For checking
+        img = cv2.imread(file, 1)  # Jovic: Now, we can read each file since we have the full path
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        # eyes = eye_cascade.detectMultiScale(gray, 1.3, 5)
-        eyes, rejectLevels, levelWeights = eye_cascade.detectMultiScale3(gray, scaleFactor=1.3,
+        
+        # FACE EXTRACTION
+        faces, faceRejectLevels, faceLevelWeights = face_cascade.detectMultiScale3(gray, scaleFactor=1.3,
                                                      minNeighbors=5,
                                                      minSize=(10, 10),
                                                      flags=cv2.CASCADE_SCALE_IMAGE,
                                                      outputRejectLevels=True)
         try:
-            # for (x,y,w,h) in eyes:
-            #     roi_gray = gray[y:y+w, x:x+w]
-            #     roi_color = img[y:y+h, x:x+w] 
-            x, y, w, h = eyes[np.argmax(levelWeights)]
-            print()
-            print(levelWeights)
-            print(np.argmin(levelWeights))
-            print(levelWeights[np.argmax(levelWeights)])
-            print()
+            x, y, w, h = faces[np.argmax(faceLevelWeights)]
             roi_gray = gray[y:y+w, x:x+w]
             roi_color = img[y:y+h, x:x+w]
-            resized = cv2.resize(roi_color, (128,128))
+            resized = cv2.resize(roi_color, (500,500))
             cv2.imwrite("media/extracted.jpg", resized)
             test_image_path = "media/extracted.jpg"
-            extracted = True
+            extracted_face = True
         except:
-            print("EXTRACTION WENT WRONG. HEHE")
+            print("FACE EXTRACTION WENT WRONG.")
             traceback.print_exc()
-            extracted = False
+            extracted_face = False
+            roi_gray = gray
+
+
+        # EYE EXTRACTION
+        eyes, eyeRejectLevels, eyeLevelWeights = eye_cascade.detectMultiScale3(roi_gray, scaleFactor=1.3,
+                                                        minNeighbors=5,
+                                                        minSize=(10, 10),
+                                                        flags=cv2.CASCADE_SCALE_IMAGE,
+                                                        outputRejectLevels=True)
+        try:
+            ex, ey, ew, eh = eyes[np.argmax(eyeLevelWeights)]
+            if not extracted_face:
+                roi_color = img[ey:ey+eh, ex:ex+ew]
+            roi_eye = roi_color[ey:ey+eh, ex:ex+ew] 
+            resized = cv2.resize(roi_eye, (128,128))
+            cv2.imwrite("media/extracted.jpg", resized)
+            test_image_path = "media/extracted.jpg"
+            extracted_eye = True
+        except:
+            print("EYE EXTRACTION WENT WRONG.")
+            traceback.print_exc()
+            extracted_face = False
+
 
 
     img = image.load_img(test_image_path, target_size=(256, 256))
@@ -117,12 +148,26 @@ def results(request, filename):
     predicted_label = class_labels[predicted_class[0]] # The Output
     # Output Result
     # return predicted_label
-    if extracted:
+    if extracted_face or extracted_eye:
         displayed_image = "extracted.jpg"
     else:
         displayed_image = filename
     print(displayed_image)
-    context = {'image': displayed_image, 'predicted_label': predicted_label}
+    
+    apology = ""
+    reassess_prompt = ""
+    if not extracted_face or not extracted_face:
+        apology = "Sorry, I can't identify your"
+        if not extracted_face and not extracted_face:
+            apology += " face and eye "
+        elif not extracted_face:
+            apology += " face "
+        elif not extracted_eyes:
+            apology += " eye "
+        apology += " :(\n"
+    reassess_prompt = "Please click Reassess if you think the assessment is inaccurate."
+
+    context = {'image': displayed_image, 'predicted_label': predicted_label, 'apology': apology, 'reassess_prompt': reassess_prompt}
     return render(request, "edr/results_screen.html", context)
 
 def assess(request):
