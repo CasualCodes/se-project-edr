@@ -118,12 +118,16 @@ def results(request, filename):
                                                         minSize=(10, 10),
                                                         flags=cv2.CASCADE_SCALE_IMAGE,
                                                         outputRejectLevels=True)
+        print(eyes)
         try:
             ex, ey, ew, eh = eyes[np.argmax(eyeLevelWeights)]
             if not extracted_face:
                 roi_color = img[ey:ey+eh, ex:ex+ew]
-            roi_eye = roi_color[ey:ey+eh, ex:ex+ew] 
-            resized = cv2.resize(roi_eye, (128,128))
+            roi_eye = roi_color[ey:ey+eh, ex:ex+ew]
+            if not extracted_face:
+                resized = cv2.resize(roi_color, (128,128)) 
+            else:
+                resized = cv2.resize(roi_eye, (128,128))
             cv2.imwrite("media/extracted.jpg", resized)
             test_image_path = "media/extracted.jpg"
             extracted_eye = True
@@ -156,9 +160,9 @@ def results(request, filename):
     
     apology = ""
     reassess_prompt = ""
-    if not extracted_face or not extracted_face:
-        apology = "Sorry, I can't identify your"
-        if not extracted_face and not extracted_face:
+    if not extracted_face or not extracted_eye:
+        apology = "Sorry, I can't extract your"
+        if not extracted_face and not extracted_eye:
             apology += " face and eye "
         elif not extracted_face:
             apology += " face "
