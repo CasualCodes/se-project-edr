@@ -11,3 +11,4 @@ data/model/model.h5
 *.sqlite3*
 *.jp*g
 *.h5
+.idea/*
