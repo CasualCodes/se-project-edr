@@ -41,19 +41,19 @@ if (document.body.classList.contains("light-theme")) {
 icon.onclick = function () {
     document.body.classList.toggle("light-theme");
     if (document.body.classList.contains("light-theme")) {
-        icon.src = "{% static '' %}LightMode.png";
-        if (assess) assess.src = "{% static '' %}LightAssess.jpg";
-        if (library) library.src = "{% static '' %}LightLibrary.jpg";
-        if (nav_icon) nav_icon.src = "{% static '' %}NavIcon2.png";
-        if (upload) upload.src = "{% static '' %}LightUplaod.jpg";
+        icon.src = lightmodeurl;
+        if (assess) assess.src = lightassessurl;
+        if (library) library.src = lightlibraryurl;
+        if (nav_icon) nav_icon.src = navicon2url;
+        if (upload) upload.src = lightuploadurl;
         // Store the theme preference
         localStorage.setItem('theme', 'light-theme');
     } else {
-        icon.src = "{% static '' %}DarkMode.png";
-        if (assess) assess.src = "{% static '' %}DarkAssess.jpg";
-        if (library) library.src = "{% static '' %}DarkLibrary.jpg";
-        if (nav_icon) nav_icon.src = "{% static '' %}NavIcon.png";
-        if (upload) upload.src = "{% static '' %}DarkUpload.jpg";
+        icon.src = darkmodeurl;
+        if (assess) assess.src = darkassessurl;
+        if (library) library.src = darklibraryurl;
+        if (nav_icon) nav_icon.src = naviconurl;
+        if (upload) upload.src = darkuploadurl;
         // Store the theme preference
         localStorage.setItem('theme', '');
     }
