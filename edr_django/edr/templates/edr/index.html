@@ -29,10 +29,10 @@
                     <li><a href="/edr/assess">ASSESS</a></li>
                     <li><a href="#">LIBRARY</a></li>
                     <li><a href="#">FAQ</a></li>
-                    <li><img src="img/DarkMode.png" alt="LightMode" id="theme"></li>
+                    <li><img src="{% static 'DarkMode.png'%}" alt="LightMode" id="theme"></li>
                 </ul>
             </nav>
-            <img src="img/NavIcon.png" alt="NavIcon" class="main_nav_icon" id="mainNav">
+            <img src="{% static 'NavIcon.png'%}" alt="NavIcon" class="main_nav_icon" id="mainNav">
         </header>
 
         <div class="content" id="assess">
@@ -45,7 +45,7 @@
                 <a href="/edr/assess">ASSESS NOW</a>
             </div>
             <div class="image">
-                <img src="img/DarkAssess.jpg" alt="AssessImage" id="assess-image">
+                <img src="{% static 'DarkAssess.jpg'%}" alt="AssessImage" id="assess-image">
             </div>
         </div>
 
@@ -59,12 +59,25 @@
                 <a href="#">LEARN MORE</a>
             </div>
             <div class="image">
-                <img src="img/DarkLibrary.jpg" alt="LibraryImage" id="library-image">
+                <img src="{% static 'DarkLibrary.jpg'%}" alt="LibraryImage" id="library-image">
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        var lightmodeurl = "{% static 'LightMode.png' %}";
+        var lightassessurl = "{% static 'LightAssess.jpg' %}"
+        var lightlibraryurl = "{% static 'LightLibrary.jpg' %}"
+        var navicon2url = "{% static 'NavIcon2.png' %}"
+        var lightuploadurl = "{% static 'LightUpload.jpg' %}"
+
+        var darkmodeurl = "{% static 'DarkMode.png' %}"
+        var darkassessurl = "{% static 'DarkAssess.jpg' %}"
+        var darklibraryurl = "{% static 'DarkLibrary.jpg' %}"
+        var naviconurl = "{% static 'NavIcon.png' %}"
+        var darkuploadurl = "{% static 'DarkUpload.jpg' %}"
+    </script>
+    <script src="{% static 'script.js'%}"></script>
 
 
 </body>

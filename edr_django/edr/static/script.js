@@ -24,36 +24,36 @@ var upload = document.getElementById("upload-image");
 
 // Apply the theme from the stored preference
 if (document.body.classList.contains("light-theme")) {
-    icon.src = "img/LightMode.png";
-    if (assess) assess.src = "img/LightAssess.jpg";
-    if (library) library.src = "img/LightLibrary.jpg";
-    if (nav_icon) nav_icon.src = "img/NavIcon2.png";
-    if (upload) upload.src = "img/LightUplaod.jpg";
+    icon.src = lightmodeurl;
+    if (assess) assess.src = lightassessurl;
+    if (library) library.src = lightlibraryurl;
+    if (nav_icon) nav_icon.src = navicon2url;
+    if (upload) upload.src = lightuploadurl;
 } else {
-    icon.src = "img/DarkMode.png";
-    if (assess) assess.src = "img/DarkAssess.jpg";
-    if (library) library.src = "img/DarkLibrary.jpg";
-    if (nav_icon) nav_icon.src = "img/NavIcon.png";
-    if (upload) upload.src = "img/DarkUpload.jpg";
+    icon.src = darkmodeurl;
+    if (assess) assess.src = darkassessurl;
+    if (library) library.src = darklibraryurl;
+    if (nav_icon) nav_icon.src = naviconurl;
+    if (upload) upload.src = darkuploadurl;
 }
 
 // Toggle theme when the icon is clicked
 icon.onclick = function () {
     document.body.classList.toggle("light-theme");
     if (document.body.classList.contains("light-theme")) {
-        icon.src = "img/LightMode.png";
-        if (assess) assess.src = "img/LightAssess.jpg";
-        if (library) library.src = "img/LightLibrary.jpg";
-        if (nav_icon) nav_icon.src = "img/NavIcon2.png";
-        if (upload) upload.src = "img/LightUplaod.jpg";
+        icon.src = "{% static '' %}LightMode.png";
+        if (assess) assess.src = "{% static '' %}LightAssess.jpg";
+        if (library) library.src = "{% static '' %}LightLibrary.jpg";
+        if (nav_icon) nav_icon.src = "{% static '' %}NavIcon2.png";
+        if (upload) upload.src = "{% static '' %}LightUplaod.jpg";
         // Store the theme preference
         localStorage.setItem('theme', 'light-theme');
     } else {
-        icon.src = "img/DarkMode.png";
-        if (assess) assess.src = "img/DarkAssess.jpg";
-        if (library) library.src = "img/DarkLibrary.jpg";
-        if (nav_icon) nav_icon.src = "img/NavIcon.png";
-        if (upload) upload.src = "img/DarkUpload.jpg";
+        icon.src = "{% static '' %}DarkMode.png";
+        if (assess) assess.src = "{% static '' %}DarkAssess.jpg";
+        if (library) library.src = "{% static '' %}DarkLibrary.jpg";
+        if (nav_icon) nav_icon.src = "{% static '' %}NavIcon.png";
+        if (upload) upload.src = "{% static '' %}DarkUpload.jpg";
         // Store the theme preference
         localStorage.setItem('theme', '');
     }
