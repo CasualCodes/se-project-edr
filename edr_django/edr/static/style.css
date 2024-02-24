@@ -446,3 +446,27 @@ span {
 
 
 }
+
+
+.content button {
+    /* height: 25px; */
+    padding: 10px;
+    margin-top: 25px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    background-color: #101010;
+    text-decoration: none;
+    text-align: center;
+    font-size: 22px;
+    color: white;
+}
+
+.row button {
+    min-width: 150px;
+}
+
+.row .text button {
+    width: 70%;
+}
+
