@@ -111,30 +111,30 @@ def results(request, filename):
             extracted_face = False
             roi_gray = gray
 
-
-        # EYE EXTRACTION
-        eyes, eyeRejectLevels, eyeLevelWeights = eye_cascade.detectMultiScale3(roi_gray, scaleFactor=1.3,
-                                                        minNeighbors=5,
-                                                        minSize=(10, 10),
-                                                        flags=cv2.CASCADE_SCALE_IMAGE,
-                                                        outputRejectLevels=True)
-        print(eyes)
-        try:
-            ex, ey, ew, eh = eyes[np.argmax(eyeLevelWeights)]
-            if not extracted_face:
-                roi_color = img[ey:ey+eh, ex:ex+ew]
-            roi_eye = roi_color[ey:ey+eh, ex:ex+ew]
-            if not extracted_face:
-                resized = cv2.resize(roi_color, (128,128)) 
-            else:
-                resized = cv2.resize(roi_eye, (128,128))
-            cv2.imwrite("media/extracted.jpg", resized)
-            test_image_path = "media/extracted.jpg"
-            extracted_eye = True
-        except:
-            print("EYE EXTRACTION WENT WRONG.")
-            traceback.print_exc()
-            extracted_face = False
+        if extracted_face:
+            # EYE EXTRACTION
+            eyes, eyeRejectLevels, eyeLevelWeights = eye_cascade.detectMultiScale3(roi_gray, scaleFactor=1.3,
+                                                            minNeighbors=5,
+                                                            minSize=(10, 10),
+                                                            flags=cv2.CASCADE_SCALE_IMAGE,
+                                                            outputRejectLevels=True)
+            print(eyes)
+            try:
+                ex, ey, ew, eh = eyes[np.argmax(eyeLevelWeights)]
+                if not extracted_face:
+                    roi_color = img[ey:ey+eh, ex:ex+ew]
+                roi_eye = roi_color[ey:ey+eh, ex:ex+ew]
+                if not extracted_face:
+                    resized = cv2.resize(roi_color, (128,128)) 
+                else:
+                    resized = cv2.resize(roi_eye, (128,128))
+                cv2.imwrite("media/extracted.jpg", resized)
+                test_image_path = "media/extracted.jpg"
+                extracted_eye = True
+            except:
+                print("EYE EXTRACTION WENT WRONG.")
+                traceback.print_exc()
+                extracted_face = False
 
 
 
@@ -163,13 +163,14 @@ def results(request, filename):
     if not extracted_face or not extracted_eye:
         apology = "Sorry, I can't extract your"
         if not extracted_face and not extracted_eye:
-            apology += " face and eye "
-        elif not extracted_face:
+            # apology += " face and eye "
             apology += " face "
-        elif not extracted_eyes:
-            apology += " eye "
+        # elif not extracted_face:
+        #     apology += " face "
+        # elif not extracted_eyes:
+        #     apology += " eye "
         apology += " :(\n"
-    reassess_prompt = "Please click Reassess if you think the assessment is inaccurate."
+    reassess_prompt = "Please click Re-Assess if you think the assessment is inaccurate."
 
     context = {'image': displayed_image, 'predicted_label': predicted_label, 'apology': apology, 'reassess_prompt': reassess_prompt}
     return render(request, "edr/results_screen.html", context)
