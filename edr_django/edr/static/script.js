@@ -1,63 +1,71 @@
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('.main_nav_icon').addEventListener('click', function () {
-        document.querySelector('nav ul').classList.toggle('active');
+if (!DEBUG) {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.main_nav_icon').addEventListener('click', function () {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
     });
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('.nav_icon').addEventListener('click', function () {
-        document.querySelector('nav ul').classList.toggle('active');
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.nav_icon').addEventListener('click', function () {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
     });
-});
 
-// Check if the user has a theme preference stored
-var currentTheme = localStorage.getItem('theme');
-if (currentTheme) {
-    document.body.classList.add(currentTheme);
-}
+    // Check if the user has a theme preference stored
+    var currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        document.body.classList.add(currentTheme);
+    }
 
-var icon = document.getElementById("theme");
-var nav_icon = document.querySelector(".main_nav_icon");
-var assess = document.getElementById("assess-image");
-var library = document.getElementById("library-image");
-var upload = document.getElementById("upload-image");
+    var icon = document.getElementById("theme");
+    var nav_icon = document.querySelector(".main_nav_icon");
+    var assess = document.getElementById("assess-image");
+    var library = document.getElementById("library-image");
+    var upload = document.getElementById("upload-image");
 
-// Apply the theme from the stored preference
-if (document.body.classList.contains("light-theme")) {
-    icon.src = lightmodeurl;
-    if (assess) assess.src = lightassessurl;
-    if (library) library.src = lightlibraryurl;
-    if (nav_icon) nav_icon.src = navicon2url;
-    if (upload) upload.src = lightuploadurl;
-} else {
-    icon.src = darkmodeurl;
-    if (assess) assess.src = darkassessurl;
-    if (library) library.src = darklibraryurl;
-    if (nav_icon) nav_icon.src = naviconurl;
-    if (upload) upload.src = darkuploadurl;
-}
+    console.log("(script.js is running)");
+    console.log(lightmodeurl);
 
-// Toggle theme when the icon is clicked
-icon.onclick = function () {
-    document.body.classList.toggle("light-theme");
+    // Apply the theme from the stored preference
     if (document.body.classList.contains("light-theme")) {
         icon.src = lightmodeurl;
+        console.log(lightmodeurl);
         if (assess) assess.src = lightassessurl;
         if (library) library.src = lightlibraryurl;
         if (nav_icon) nav_icon.src = navicon2url;
+        console.log(navicon2url);
         if (upload) upload.src = lightuploadurl;
-        // Store the theme preference
-        localStorage.setItem('theme', 'light-theme');
     } else {
         icon.src = darkmodeurl;
         if (assess) assess.src = darkassessurl;
         if (library) library.src = darklibraryurl;
         if (nav_icon) nav_icon.src = naviconurl;
         if (upload) upload.src = darkuploadurl;
-        // Store the theme preference
-        localStorage.setItem('theme', '');
+    }
+
+    // Toggle theme when the icon is clicked
+    icon.onclick = function () {
+        document.body.classList.toggle("light-theme");
+        if (document.body.classList.contains("light-theme")) {
+            icon.src = lightmodeurl;
+            if (assess) assess.src = lightassessurl;
+            if (library) library.src = lightlibraryurl;
+            if (nav_icon) nav_icon.src = navicon2url;
+            if (upload) upload.src = lightuploadurl;
+            // Store the theme preference
+            localStorage.setItem('theme', 'light-theme');
+        } else {
+            icon.src = darkmodeurl;
+            if (assess) assess.src = darkassessurl;
+            if (library) library.src = darklibraryurl;
+            if (nav_icon) nav_icon.src = naviconurl;
+            if (upload) upload.src = darkuploadurl;
+            // Store the theme preference
+            localStorage.setItem('theme', '');
+        }
     }
 }
+console.log("Jan's code finished.")
 
 
 
@@ -90,6 +98,8 @@ var id_imgfile = document.getElementById('id_imgfile'); // choose file field
 // id_imgfile.style.display = 'none';
 var upload_btn = document.getElementById('upload_btn');
 
+console.log("Original initializations finished.")
+
 // function showResults() {
 //     assess_lbl.style.display = 'none';
 //     start.style.display = 'none';
@@ -121,7 +131,9 @@ var upload_btn = document.getElementById('upload_btn');
 // };
 
 id_imgfile.addEventListener('change', function (event) {
+    console.log("Attempting submission...")
     upload_btn.click();
+    console.log("Attempted submission.")
 
     // var file = id_imgfile.files[0];
     // var formData = new FormData();

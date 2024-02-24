@@ -177,19 +177,24 @@ def results(request, filename):
 def assess(request):
     print(f"Great! You're using Python 3.6+. If you fail here, use the right version.")
     message = 'Upload as many files as you want!'
+    print("Loading Assess page...")
     # Handle file upload
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
+        print("Initialized form variable.")
         if form.is_valid():
             newimg = Image(imgfile=request.FILES['imgfile'])
             newimg.save()
 
             # Redirect to the image list after POST
+            print("Redirecting to results...")
             return redirect('results/'+newimg.imgfile.name)
         else:
             message = 'The form is not valid. Fix the following error:'
+            print(message)
     else:
         form = ImageForm()  # An empty, unbound form
+        print("Initialized empty, unbound form.")
 
     # Load images for the list page
     images = Image.objects.all()

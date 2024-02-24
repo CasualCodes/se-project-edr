@@ -50,6 +50,24 @@
             <button class="button" id="main_btn" type="button" onclick="location.href='/edr'">Main</button>
         </div>
     </div>
+    <script>
+        console.log("Begin initializing static files...")
+        var lightmodeurl = "{% static 'LightMode.png' %}";
+        console.log(lightmodeurl)
+        var lightassessurl = "{% static 'LightAssess.jpg' %}"
+        var lightlibraryurl = "{% static 'LightLibrary.jpg' %}"
+        var navicon2url = "{% static 'NavIcon2.png' %}"
+        var lightuploadurl = "{% static 'LightUpload.jpg' %}"
+        console.log("Loaded light mode static files.")
+
+        var darkmodeurl = "{% static 'DarkMode.png' %}"
+        var darkassessurl = "{% static 'DarkAssess.jpg' %}"
+        var darklibraryurl = "{% static 'DarkLibrary.jpg' %}"
+        var naviconurl = "{% static 'NavIcon.png' %}"
+        var darkuploadurl = "{% static 'DarkUpload.jpg' %}"
+        console.log("Loaded dark mode static files.")
+        var DEBUG = true;
+    </script>
     <script src="{% static 'script.js' %}"></script>
 
 </body>
