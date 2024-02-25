@@ -514,22 +514,15 @@ span {
         margin-bottom: -2px;
         font-size: 15px;
     }
+
+    .row .text button {
+        width: 90%;
+    }
+
+    .row .text button {
+        width: 90%;
+    }
     
-    #result .row .text h1{
-        margin-top: -10%;
-    }
-
-    .row .text button {
-        width: 90%;
-    }
-
-    .row .text button {
-        width: 90%;
-    }
-
-
-
-
 }
 
 .content button {
