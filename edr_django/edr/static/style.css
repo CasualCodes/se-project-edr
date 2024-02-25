@@ -223,6 +223,8 @@ span {
 
 #result .image {
     align-items: center;
+    max-height: 40%;
+    min-height: 30%;
 }
 
 #result .image img {
