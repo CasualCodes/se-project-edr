@@ -228,6 +228,7 @@ span {
 #result .image img {
     border-radius: 20px;
     max-width: 80%;
+    min-width: 50%;
     height: auto;
 }
 
@@ -455,6 +456,7 @@ span {
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
+    border-color: white;
     background-color: #101010;
     text-decoration: none;
     text-align: center;
