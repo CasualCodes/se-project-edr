@@ -144,7 +144,13 @@ def results(request, filename):
     img_array /= 255.  # Normalize the image
 
     ## INPUT TO MODEL ##
-    prediction = loaded_model.predict(img_array)
+    # Copied verbose=0 from Jan's confidence code
+    prediction = loaded_model.predict(img_array, verbose=0)
+
+    # Get confidence
+    confidence = prediction[0, np.argmax(prediction)]
+    confidence *= 100
+    confidence_str = f"{confidence:.2f}%"
 
     ## RESULT ##
     # Get Result
@@ -172,7 +178,7 @@ def results(request, filename):
         apology += " :(\n"
     reassess_prompt = "Please click Re-Assess if you think the assessment is inaccurate."
 
-    context = {'image': displayed_image, 'predicted_label': predicted_label, 'apology': apology, 'reassess_prompt': reassess_prompt}
+    context = {'image': displayed_image, 'predicted_label': predicted_label, 'apology': apology, 'reassess_prompt': reassess_prompt, 'confidence': confidence_str}
     return render(request, "edr/results_screen.html", context)
 
 def assess(request):
