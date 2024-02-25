@@ -155,7 +155,7 @@ def results(request, filename):
     ## RESULT ##
     # Get Result
     predicted_class = np.argmax(prediction, axis=-1)
-    predicted_label = class_labels[predicted_class[0]] # The Output
+    predicted_label = class_labels[predicted_class[0]].upper() # The Output
     # Output Result
     # return predicted_label
     if extracted_face or extracted_eye:
