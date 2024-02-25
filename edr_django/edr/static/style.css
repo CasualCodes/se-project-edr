@@ -223,8 +223,12 @@ span {
 
 #result .image {
     align-items: center;
-    max-height: 40%;
-    min-height: 30%;
+    flex: 1;
+    /*background-color: red;*/
+}
+
+#result .text{
+    /*background-color: blue;*/
 }
 
 #result .image img {
@@ -233,6 +237,8 @@ span {
     min-width: 50%;
     height: auto;
 }
+
+
 
 
 
@@ -301,7 +307,7 @@ span {
     }
 
     .content .text h1 {
-        margin-top: 0;
+        margin-top: -10%;
         font-size: 40px;
     }
 
@@ -338,6 +344,7 @@ span {
         justify-content: flex-end;
         align-items: center;
         /*background-color: blue;*/
+        flex: 1;
     }
 
     .row .image {
@@ -346,18 +353,21 @@ span {
     }
 
     .content .row .image img {
-        max-width: 90%;
+        max-width: 100%;
         height: auto;
     }
 
     .row .text {
-        margin-top: -15%;
-        padding: 2%;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         /*background-color: red;*/
         text-align: center;
+        flex: 1;
 
+    }
+    
+    #upload .text h1{
+        margin-top: -20%;
     }
 
     .row .text a {
@@ -365,27 +375,30 @@ span {
     }
 
     .disclaimer p {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     /*FOR RESULT PAGE*/
     #result {
-        padding-top: 50px;
         min-height: calc(100dvh - 50px);
+    }
+
+    #the_result{
+        scroll-snap-type: none;
     }
 
     #result .row .text {
         margin: 0;
+        align-items: center;
         /*background-color: red;*/
         text-align: left;
-
     }
 
     .row .image {
         padding-top: 10px;
         padding-left: 30px;
         padding-right: 30px;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
         /*background-color: blue;*/
     }
@@ -402,13 +415,16 @@ span {
     }
 
     #result .row .text p {
-        font-size: 20px;
+        margin-bottom: -2px;
+        font-size: 18px;
+        
     }
 
-    #result .row .text a {
+    #result .row .text a{
+        width: 60%;
         font-size: 20px;
     }
-
+    
     nav ul {
         display: none;
         position: fixed;
@@ -432,11 +448,9 @@ span {
     nav ul li {
         display: block;
         margin: 20px 0;
-        /* Adjust margin as needed */
     }
 
     nav ul li a {
-        font-weight: bold;
         color: var(--Secondary);
     }
 
@@ -446,7 +460,21 @@ span {
         height: 30px;
         cursor: pointer;
     }
+    
+    #result{
+        padding-top: 0;
+    }
+    
+    #result .image h6{
+        align-items: flex-end;
+        font-size: 10px;
+        margin-bottom: -1%;
+        margin-top: 10px;
+    }
 
+    span {
+        font-size: 15px;
+    }
 
 }
 
@@ -454,7 +482,6 @@ span {
 .content button {
     /* height: 25px; */
     padding: 10px;
-    margin-top: 25px;
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
@@ -472,5 +499,13 @@ span {
 
 .row .text button {
     width: 70%;
+}
+
+.content button:hover{
+    background-color: #20AD59;
+}
+
+.content .buttonBlue{
+    color: white;
 }
 
