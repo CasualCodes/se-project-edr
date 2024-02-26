@@ -209,3 +209,7 @@ def assess(request):
     # Render list page with the images and the form
     context = {'images': images, 'form': form, 'message': message}
     return render(request, 'edr/assess_screen.html', context)
+    
+def faq(request):
+    context = {}
+    return render(request, 'edr/faqs.html', context)

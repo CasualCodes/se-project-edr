@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - AIDentifye</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>AIDENTIFYE</h1>
+            <nav>
+                <ul>
+                    <li><a href="/edr">HOME</a></li>
+                    <li><a href="/edr/assess">ASSESS</a></li>
+                    <li><a href="#">LIBRARY</a></li>
+                    <li class="current_page"><a href="#">FAQ</a></li>
+                    <li><img src="img/DarkMode.png" alt="LightMode" id="theme"></li>
+                </ul>
+            </nav>
+            <img src="img/NavIcon.png" alt="NavIcon" class="main_nav_icon">
+        </header>
+
+        <div class="content" id="faq">
+            <div class="row">
+                <div class="text">
+                    <h1>Frequently Asked <br>Questions</h1>
+                    <p>Find answers to common questions about AIDentifye.<br>
+                         If you can't find what you're looking for, feel free to<br>
+                        contact us at</a>
+                    </p>
+                </div>
+
+                    <div class="accordion">
+                        <div class="question">Is AIDentifye free?</div>
+                        <div class="answer">Yes, AIDentifye is completely free to use. We believe in providing accessible and convenient eye health assessments to everyone, regardless of financial constraints.</div>
+                            
+                        <div class="question">How accurate are the assessments?</div>
+                        <div class="answer">The accuracy of assessments may vary based on image quality. High-quality images yield more reliable results.</div>
+                            
+                        <div class="question">Can I use AIDentifye on any device?</div>
+                        <div class="answer">Yes, AIDentifye is designed to be accessible on a wide range of devices, including smartphones, tablets, and desktop computers. </div>
+                             
+                        <div class="question">Can AIDentifye diagnose any types of eye disease?</div>
+                        <div class="answer">While AIDentifye is capable of detecting and providing assessments of many common eye diseases, only diseases trained by the model can be identified. <br><br> You can learn more about the specific eye conditions that AIDentifye can diagnose here.</div>
+                             
+                        <div class="question">Are my personal information and images secure on AIDentifye?</div>
+                        <div class="answer">Yes, we take the security and privacy of your personal information and images seriously. All data uploaded to AIDentifye is stored securely and deleted after assessment.</div>
+                        
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log("Begin initializing static files...")
+        var lightmodeurl = "{% static 'LightMode.png' %}";
+        console.log(lightmodeurl)
+        var lightassessurl = "{% static 'LightAssess.jpg' %}"
+        var lightlibraryurl = "{% static 'LightLibrary.jpg' %}"
+        var navicon2url = "{% static 'NavIcon2.png' %}"
+        var lightuploadurl = "{% static 'LightUpload.jpg' %}"
+        console.log("Loaded light mode static files.")
+
+        var darkmodeurl = "{% static 'DarkMode.png' %}"
+        var darkassessurl = "{% static 'DarkAssess.jpg' %}"
+        var darklibraryurl = "{% static 'DarkLibrary.jpg' %}"
+        var naviconurl = "{% static 'NavIcon.png' %}"
+        var darkuploadurl = "{% static 'DarkUpload.jpg' %}"
+        console.log("Loaded dark mode static files.")
+        var DEBUG = false;
+    </script>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

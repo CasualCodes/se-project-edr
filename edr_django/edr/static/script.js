@@ -67,6 +67,37 @@ if (!DEBUG) {
 }
 console.log("Jan's code finished.")
 
+/*START HERE*/
+document.addEventListener('DOMContentLoaded', function () {
+    var questions = document.querySelectorAll('.question');
+    var answers = document.querySelectorAll('.answer');
+
+    questions.forEach(function(question) {
+        question.addEventListener('click', function() {
+            var answer = this.nextElementSibling;
+            var isActive = this.classList.contains('active');
+
+            answers.forEach(function(otherAnswer) {
+                if (otherAnswer !== answer && otherAnswer.style.display === 'block') {
+                    otherAnswer.style.display = 'none';
+                }
+            });
+
+            questions.forEach(function(q) {
+                q.classList.remove('active');
+            });
+
+            if (!isActive || answer.style.display !== 'block') {
+                this.classList.add('active');
+            }
+
+            answer.style.display = isActive ? 'none' : 'block';
+        });
+    });
+});
+/*END HERE*/
+
+
 
 
 

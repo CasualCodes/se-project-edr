@@ -45,6 +45,7 @@ body {
     /*background-color: gray;*/
 }
 
+
 header {
     display: flex;
     flex-direction: row;
@@ -195,6 +196,11 @@ nav ul li img {
     min-width: 150px;
 }
 
+
+
+
+
+
 span {
     font-size: 20px;
     font-weight: bolder;
@@ -238,6 +244,83 @@ span {
     height: auto;
 }
 
+/*Joanna's CSS*/
+/*START HERE*/
+/*Accordion Styles*/
+
+#faq .row .text{
+    display: flex;
+    flex: 1;
+    /*background-color: blue;*/
+}
+#faq .row .accordion{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    /*background-color: red;*/
+}
+
+.question {
+    background-color: #101010;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    padding: 18px;
+    width: 85%;
+    text-align: left;
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--Secondary);
+    border-radius: 10px;
+}
+
+
+.answer {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+    padding: 18px;
+    width: 85%;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--Secondary);
+    border-radius: 0 0 10px 10px;
+    border-top: none;
+    transition: max-height 0.3s ease-out;
+}
+
+.question:hover/*, .answer:hover*/ {
+    background-color: #20AD59;
+    color: #101010;
+    border-color: #20AD59;
+}
+
+.question.active {
+    /*background-color: #20AD59;*/
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.question:after {
+    content: '\2795';
+    transition: all ease 0.6s 0.5s;
+    font-size: 13px;
+    color: #c513cb;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    color: #ffffff;
+}
+/*END HERE*/
 
 
 
@@ -427,6 +510,46 @@ span {
         width: 60%;
         font-size: 20px;
     }
+
+    /*START HERE*/
+    /*FOR THE FAQ PAGE*/
+
+    #faq{
+        padding-top: 50px;
+        min-height: calc(100dvh - 50px);
+        
+    }
+
+    .content .row{
+        flex-direction: column;
+        overflow-y: auto;
+        align-items: center;
+    }
+
+    #faq .row .text{
+        width: 100%;
+        /*background-color: blue;*/
+    }
+
+    #faq .row .accordion {
+        margin-top: -20%;
+        justify-content: flex-start;
+        width: 100%;
+        /*background-color: red;*/
+    }
+    
+    .question{
+        
+        max-width: 70%;
+        font-size: 12px;
+    }
+
+    .answer{
+        max-width: 70%;
+        font-size: 12px;
+    }
+    
+    /*End*/ 
     
     nav ul {
         display: none;
@@ -483,6 +606,55 @@ span {
 
 
 @media screen and (max-width: 360px){
+
+    #faq{
+        padding-top: 50px;
+        scroll-snap-type: none;
+        height: calc(100dvh - 50px);
+    }
+    
+    #faq .row .text{
+        justify-content: flex-start;
+        width: 100%;
+        /*background-color: blue;*/
+    }
+
+    #faq .row .accordion {
+        display: block;
+        overflow: scroll; /* Change overflow property to visible */
+        width: 100%;
+        margin-top: -70%;
+        /*background-color: red;*/
+        position: relative; /* Ensure relative positioning for the accordion */
+        text-align: center;
+    }
+
+    #faq .row .accordion > * {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 65%; /* Optionally set max-width to control the width of the content */
+    }
+    
+    #faq .row .text h1{
+        margin-top: 8%;
+        font-size: 28px;
+    }
+
+    .question{
+        max-width: 65%;
+        font-size: 10px;
+    }
+
+    .answer{
+        height: auto;
+        max-width: 65%;
+        font-size: 10px;
+    }
+
+    #faq .row .text p{
+        font-size: 11px;
+    }
+
 
     #result .row .text h1{
         margin-top: 0;
