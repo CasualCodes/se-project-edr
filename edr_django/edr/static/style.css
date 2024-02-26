@@ -515,9 +515,8 @@ span {
     /*FOR THE FAQ PAGE*/
 
     #faq{
-        padding-top: 50px;
-        min-height: calc(100dvh - 50px);
-        
+        padding-top: 10px;
+        scroll-snap-type: none;
     }
 
     .content .row{
@@ -527,19 +526,25 @@ span {
     }
 
     #faq .row .text{
+        justify-content: center;
         width: 100%;
         /*background-color: blue;*/
+        flex: 1;
+    }
+
+    #faq .row .text h1{
+        margin-top: 0;
     }
 
     #faq .row .accordion {
-        margin-top: -20%;
-        justify-content: flex-start;
+        justify-content: start;
+        flex: 1.9;
         width: 100%;
+        overflow-y: auto;
         /*background-color: red;*/
     }
     
     .question{
-        
         max-width: 70%;
         font-size: 12px;
     }
@@ -609,45 +614,35 @@ span {
 
     #faq{
         padding-top: 50px;
-        scroll-snap-type: none;
-        height: calc(100dvh - 50px);
+        min-height: calc(100dvh - 50px);
     }
     
     #faq .row .text{
-        justify-content: flex-start;
+        justify-content: center;
         width: 100%;
         /*background-color: blue;*/
+        flex: 1;
     }
 
     #faq .row .accordion {
-        display: block;
-        overflow: scroll; /* Change overflow property to visible */
-        width: 100%;
-        margin-top: -70%;
+        flex: 2.6;
         /*background-color: red;*/
-        position: relative; /* Ensure relative positioning for the accordion */
-        text-align: center;
-    }
-
-    #faq .row .accordion > * {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 65%; /* Optionally set max-width to control the width of the content */
+        overflow-y: scroll;
     }
     
     #faq .row .text h1{
-        margin-top: 8%;
         font-size: 28px;
     }
 
     .question{
-        max-width: 65%;
+        max-width: 70%;
         font-size: 10px;
     }
 
     .answer{
+        overflow: scroll;
         height: auto;
-        max-width: 65%;
+        max-width: 70%;
         font-size: 10px;
     }
 
