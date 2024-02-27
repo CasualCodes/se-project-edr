@@ -61,6 +61,11 @@ header {
     /*background: coral;*/
 }
 
+header a{
+    text-decoration: none;
+    color: white;
+}
+
 header h1 {
     flex: 2;
     letter-spacing: 3px;
