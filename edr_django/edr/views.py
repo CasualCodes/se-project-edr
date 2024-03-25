@@ -17,6 +17,8 @@ import glob
 import os
 import traceback
 
+from pathlib import Path
+
 ## MODEL ##
 # Load the saved model
 loaded_model = tensorflow.keras.models.load_model('edr/model.h5')
@@ -24,9 +26,32 @@ loaded_model = tensorflow.keras.models.load_model('edr/model.h5')
 # Print the class labels
 class_labels = list(["Cataract", "Conjunctivitis", "Ectropion", "Normal", "Pterygium", "Trachoma"])
 
+new_session = True
+
 def index(request):
-    #ATTEMPT AT PRELOADING
-    print("Preloading model or something...")
+    
+    # EWWWWW
+    global new_session
+
+    # print current directory for debuggings
+    print("WORKING DIRECTORY: ")
+    print(os.getcwd())
+
+    # Remove previous session files
+    if new_session:
+        print("Clearing files from previous session...")
+        root = Path('./media')
+        filenames = ['sharingan'] # eto lang ang maliligtas
+
+        for path in root.iterdir():
+            if path.name not in filenames:
+                path.unlink()
+        new_session = False
+    else:
+        print("Clearing will proceed in the next session.")
+
+    # PREPARE THE MODEL
+    print("Preparing the model...")
     
     ## DATA PREPROCESS ##
     test_image_path = 'media/sharingan'
@@ -177,6 +202,15 @@ def results(request, filename):
         #     apology += " eye "
         apology += " :(\n"
     reassess_prompt = "Please click Re-Assess if you think the assessment is inaccurate."
+
+    # Just kidding, we still need to display the images
+    # # AUTODELETION
+    # # remove extracted.jpg
+    # if os.path.isfile("./media/extracted.jpg"):
+    #     os.remove("./media/extracted.jpg")
+    # # remove original image
+    # if os.path.isfile("./media/"+filename):
+    #     os.remove("./media/"+filename)
 
     context = {'image': displayed_image, 'predicted_label': predicted_label, 'apology': apology, 'reassess_prompt': reassess_prompt, 'confidence': confidence_str}
     return render(request, "edr/results_screen.html", context)
