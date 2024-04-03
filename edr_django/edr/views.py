@@ -100,6 +100,11 @@ def results(request, filename):
     else if no eye_extracted:
         write disclaimer for user
     '''
+
+    # here we will store the face rectangle sizes
+    rectangle_sizes = []
+    # this will be the index of the biggest face rectangle
+    biggest_rectangle = 0 
     
     extracted_face = False
     extracted_eye = False
@@ -123,7 +128,19 @@ def results(request, filename):
                                                      flags=cv2.CASCADE_SCALE_IMAGE,
                                                      outputRejectLevels=True)
         try:
-            x, y, w, h = faces[np.argmax(faceLevelWeights)]
+            # This tries to take the face with the highest confidence level
+            # x, y, w, h = faces[np.argmax(faceLevelWeights)]
+            if faces.size > 0:
+                print("Faces:")
+                print(faces)
+                # Iterate over the faces and calculate the rectangle areas
+                for i, face in enumerate(faces):
+                    # Multiply the face length and width
+                    rectangle_sizes.append(face[2]*face[3])
+                    print(rectangle_sizes[i])
+                # Now select the face with the max size
+                x, y, w, h = faces[rectangle_sizes.index(max(rectangle_sizes))]
+            # Proceed with the original procedure
             roi_gray = gray[y:y+w, x:x+w]
             roi_color = img[y:y+h, x:x+w]
             resized = cv2.resize(roi_color, (500,500))
@@ -143,6 +160,7 @@ def results(request, filename):
                                                             minSize=(10, 10),
                                                             flags=cv2.CASCADE_SCALE_IMAGE,
                                                             outputRejectLevels=True)
+            print("EYES:")
             print(eyes)
             try:
                 ex, ey, ew, eh = eyes[np.argmax(eyeLevelWeights)]
