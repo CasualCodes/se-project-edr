@@ -353,51 +353,6 @@ span{
 }
 
 /*LIBRARY ENDS HERE*/
-
-/*RESULTS*/
-
-/*#popup {
-    display: none;
-    position: absolute;
-    left: 15%;
-    top: 10%;
-    width: 50%; 
-    background-color: white;
-    border: 1px solid black;
-    padding: 20px;
-    overflow-y: scroll;
-}*/
-
-#popup {
-    display: none;
-    position: absolute;
-    top: 25%;
-    left: 16%;
-    width: 30%; 
-    max-height: 50%;
-    overflow-y: scroll;
-    background-color: var(--Tertiary);
-    border: 1px solid var(--Primary);
-    border-radius: 10px;
-    padding: 20px;
-    /*z-index: 1000;*/
-}
-
-#closePopup {
-    display: block;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-size: 20px;
-    color: #999;
-}
-
-#closePopup:hover {
-    color: #333;
-}
 /*END HERE***********************************************************************************************/
 
 
