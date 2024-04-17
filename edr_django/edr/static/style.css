@@ -321,7 +321,7 @@ span {
     margin-left: 5px;
 }
 
-.active:after {
+.quesion.active:after { 
     content: "\2796";
     color: #ffffff;
 }
