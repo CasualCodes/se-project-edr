@@ -15,7 +15,7 @@
                 <ul>
                     <li><a href="/edr">HOME</a></li>
                     <li><a href="/edr/assess">ASSESS</a></li>
-                    <li><a href="#">LIBRARY</a></li>
+                    <li><a href="/edr/library">LIBRARY</a></li>
                     <li class="current_page"><a href="#">FAQ</a></li>
                     <li><img src="img/DarkMode.png" alt="LightMode" id="theme"></li>
                 </ul>
@@ -70,6 +70,7 @@
         var darkuploadurl = "{% static 'DarkUpload.jpg' %}"
         console.log("Loaded dark mode static files.")
         var DEBUG = false;
+        var inLibrary = false;
     </script>
     <script src="{% static 'script.js' %}"></script>
 </body>
