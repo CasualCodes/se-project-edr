@@ -65,6 +65,7 @@ header {
 header h1 {
     flex: 2;
     letter-spacing: 3px;
+    color: var(--Secondary);
 }
 
 nav {
@@ -648,7 +649,6 @@ header a{
     }
 
     nav ul li a {
-        font-weight: bold;
         color: var(--Secondary);
     }
 
@@ -659,32 +659,7 @@ header a{
         cursor: pointer;
     }
 
-    /*START HERE*************************************************************************/
-    /*FOR THE FAQ PAGE*/
-    #faq {
-        padding-top: 10px;
-        min-height: calc(100dvh - 50px);
-    }
-
-    .content .row {
-        flex-direction: column;
-        overflow-y: auto;
-        align-items: center;
-    }
-
-    #faq .row .text {
-        margin: 0;
-        text-align: center;
-        margin-top: 15%;
-        padding: 2%;
-    }
-
-    #faq .row .accordion {
-        margin-top: 2%;
-        width: 80%;
-        padding-bottom: 10%;
-        padding-left: 10%;
-    }
+    
 
 
     /*FOR THE LIBRARY PAGE*/
@@ -757,9 +732,8 @@ header a{
 
 
 
-
     @media screen and (max-width: 360px){
-
+        
         #result .row .text h1{
             margin-top: 0;
         }
@@ -768,7 +742,71 @@ header a{
             font-size: 15px;
         }
 
+        .disclaimer p {
+            font-size: 10px;
+        }
+
+        #result .row .text .p{
+            margin-top: 5%;
+        }
+
+        #result .row .text a{
+            font-size: 15px;
+            height: auto;
+        }
+
+        #re-assess{
+            margin-top: 10px;
+        }
+
+        #result .row .text p {
+            margin-top: -10%;
+            margin-bottom: -2px;
+            font-size: 15px;
+        }
+
+        .row .text button {
+            width: 90%;
+        }
+
+        .row .text button {
+            width: 90%;
+        }
+
     }
+
+    .content button {
+        /* height: 25px; */
+        padding: 10px;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: white;
+        background-color: #101010;
+        text-decoration: none;
+        text-align: center;
+        font-size: 22px;
+        color: white;
+    }
+
+    .row button {
+        min-width: 300px;
+    }
+
+    .row .text button {
+        width: 70%;
+    }
+
+    .content button:hover{
+        background-color: #20AD59;
+    }
+
+    .content .buttonBlue{
+        color: white;
+    }
+
+}
+
     .disclaimer p {
         font-size: 10px;
     }
@@ -803,11 +841,188 @@ header a{
     .row .text button {
         width: 90%;
     }
-
-
-
-
-}
+    
 
     /*END HERE*************************************************************************************/
+
+/*FAQ PATCH -----------------------------------------------------*/
+
+/*Joanna's CSS*/
+/*START HERE*/
+/*Accordion Styles*/
+
+#faq .row .text{
+    display: flex;
+    flex: 1;
+    /*background-color: blue;*/
 }
+#faq .row .accordion{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    /*background-color: red;*/
+}
+
+.question {
+    background-color: #101010;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    padding: 18px;
+    width: 85%;
+    text-align: left;
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--Secondary);
+    border-radius: 10px;
+}
+
+
+.answer {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+    padding: 18px;
+    width: 85%;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--Secondary);
+    border-radius: 0 0 10px 10px;
+    border-top: none;
+    transition: max-height 0.3s ease-out;
+}
+
+.question:hover/*, .answer:hover*/ {
+    background-color: #20AD59;
+    color: #101010;
+    border-color: #20AD59;
+}
+
+.question.active {
+    /*background-color: #20AD59;*/
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.question:after {
+    content: '\2795';
+    transition: all ease 0.6s 0.5s;
+    font-size: 13px;
+    color: #c513cb;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+    /*START HERE*************************************************************************/
+    /*FOR THE FAQ PAGE*/
+    #faq {
+        padding-top: 10px;
+        min-height: calc(100dvh - 50px);
+    }
+
+    .content .row {
+        flex-direction: column;
+        overflow-y: auto;
+        align-items: center;
+    }
+
+    #faq .row .text {
+        text-align: center;
+        margin-top: 15%;
+        padding: 2%;
+        /*background-color: red;*/
+        max-height: 200px;
+        width: 100%;
+    }
+
+    #faq .row .accordion {
+        display: flex;
+        margin-top: 2%;
+        padding-bottom: 10%;
+        width: 100%;
+        /*background-color: red;*/
+        align-content: center;
+    }
+    
+    nav ul li a{
+        font-weight: normal;
+    }
+    
+    .current_page a{
+        font-weight: bolder;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #faq{
+        min-height: calc(100dvh - 50px);
+    }
+    
+    #faq .row .text{
+        justify-content: center;
+        width: 100%;
+        /*background-color: blue;*/
+        flex: 1;
+    }
+
+    #faq .row .text p{
+        font-size: 10px;
+    }
+    
+    #faq .row .text h1{
+        font-size: 40px;
+    }
+
+    #faq .row .accordion {
+        display: flex;
+        margin-top: 2%;
+        padding-bottom: 10%;
+        width: 90%;
+        /*background-color: red;*/
+        align-content: center;
+        font-size: 11px;
+
+    }
+    
+    
+    /*#faq .row .accordion {*/
+    /*    flex: 2.6;*/
+    /*    overflow-y: scroll;*/
+    /*}*/
+    
+    /*#faq .row .accordion > * {*/
+    /*    overflow-y: scroll;*/
+    /*}*/
+    
+    /*#faq .row .text h1{*/
+    /*    font-size: 28px;*/
+    /*}*/
+    
+    /*.question{*/
+    /*    */
+    /*    overflow: visible;*/
+    /*    max-width: 70%;*/
+    /*    font-size: 12px;*/
+    /*}*/
+    
+    /*.answer{*/
+    /*    overflow: scroll;*/
+    /*    height: 300%;*/
+    /*    max-width: 70%;*/
+    /*    font-size: 10px;*/
+    /*}*/
+    
+}
+/*END HERE*/
