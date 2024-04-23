@@ -338,6 +338,7 @@ span {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    height: 80%;
     margin: 5% 2% 5% 0;
     flex: 1;
     /*color: var(--Secondary);*/
@@ -369,14 +370,14 @@ span {
 /*LIBRARY + LEARN MORE*/
 #library .info-h1, 
 #learnmore .info-h1 {
-    margin: 5% 3% 1%;
+    margin: 1% 3% 1%;
     font-size: xx-large;
     font-weight: bold;
 }
 
 #library .right .eye-info,
 #learnmore .eye-info {
-    height: 80%;
+    height: 85%;
     background-color: var(--Tertiary);
     overflow-y: auto;
 }
@@ -416,11 +417,11 @@ span {
 }
 
 #learnmore .info-h1 {
-    padding-top: 3%;
+    padding-top: 2%;
 }
 
 #learnmore .eye-info {
-    height: 70%;
+    height: 77%;
     margin-top: 3%;
 }
 
@@ -430,8 +431,8 @@ span {
     right: 0%;
     border-radius: 0 5px 0 0;
     font-size: xx-large;
-    font-weight: bold;
-    padding: 3% 4%;
+    font-weight: normal;
+    padding: 2% 4%;
     cursor: pointer;
     color: var(--Secondary);
 }
@@ -632,8 +633,12 @@ span {
 
     }
 
+    #learnmore .info-h1 {
+        padding-top: 3%;
+    }
+
     #learnmore .eye-info {
-        height: 80%;
+        height: 85%;
         margin-top: 2%;
     }
 
@@ -816,16 +821,18 @@ span {
         top: 45%;
     }
 
-    #library .info-h1, #learnmore .info-h1 {
+    #library .info-h1, 
+    #learnmore .info-h1 {
         font-size: 20px;
     }
 
     #result #learnmore .eye-info{
-        height: 85%;
+        height: 86%;
     }
 
-    #result #learnmore .info-h2{
-        margin: 10% 3% 1%;
+    #library .info-h2, 
+    #learnmore .info-h2{
+        margin: 7% 3% 1%;
     }
 
     #result #learnmore .info-p{
@@ -834,6 +841,10 @@ span {
 
     #result #learnmore .info-p{
         margin: 1% 5% 5%;
+    }
+
+    #closeLearnmore {
+        padding: 0% 4%;
     }
 
     #faq{
@@ -902,8 +913,8 @@ span {
     }
 
     #result .row .text p {
-        margin-top: -10%;
-        margin-bottom: -2px;
+        /*margin-top: -10%;
+        margin-bottom: -2px;*/
         font-size: 15px;
     }
 
