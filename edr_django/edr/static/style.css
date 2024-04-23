@@ -4,13 +4,14 @@
 
     --Primary: #101010;
     --Secondary: white;
+    --Tertiary: #2d2d2d;
 }
 
 .light-theme {
     --Primary: white;
     --Secondary: #101010;
+    --Tertiary: #dbdada;
 }
-
 
 html,
 body {
@@ -45,7 +46,6 @@ body {
     /*background-color: gray;*/
 }
 
-
 header {
     display: flex;
     flex-direction: row;
@@ -69,6 +69,7 @@ header a{
 header h1 {
     flex: 2;
     letter-spacing: 3px;
+    color: var(--Secondary);
 }
 
 nav {
@@ -201,11 +202,6 @@ nav ul li img {
     min-width: 150px;
 }
 
-
-
-
-
-
 span {
     font-size: 20px;
     font-weight: bolder;
@@ -249,10 +245,7 @@ span {
     height: auto;
 }
 
-/*Joanna's CSS*/
-/*START HERE*/
 /*Accordion Styles*/
-
 #faq .row .text{
     display: flex;
     flex: 1;
@@ -265,6 +258,15 @@ span {
     justify-content: center;
     align-items: center;
     /*background-color: red;*/
+}
+
+#faq .answer a {
+    font-size: inherit;
+    color: inherit;
+    background-color: inherit;
+    border: none;
+    padding: 0%;
+    text-decoration: underline;
 }
 
 .question {
@@ -281,7 +283,6 @@ span {
     border-color: var(--Secondary);
     border-radius: 10px;
 }
-
 
 .answer {
     background-color: #ffffff;
@@ -300,7 +301,8 @@ span {
     transition: max-height 0.3s ease-out;
 }
 
-.question:hover/*, .answer:hover*/ {
+.question:hover/*, 
+.answer:hover*/ {
     background-color: #20AD59;
     color: #101010;
     border-color: #20AD59;
@@ -321,14 +323,123 @@ span {
     margin-left: 5px;
 }
 
-.active:after {
+.question .active:after {
     content: "\2796";
     color: #ffffff;
 }
-/*END HERE*/
 
+/*LIBRARY*/
+.xbutton {
+    display: none;
+}
 
+#library .right {
+    display: block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5% 2% 5% 0;
+    flex: 1;
+    /*color: var(--Secondary);*/
+    border-radius: 10px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    /*border-style: solid;
+    border-color: var(--Tertiary);*/
+}
 
+#library .condition {
+    font-size: large;
+    padding: 2%;
+    border-radius: 10px 0 0 10px;
+    /*border-left-style: solid;*/
+}
+
+#library .condition.selected {
+    color: var(--Secondary);
+    background-color: var(--Tertiary);
+}
+
+#library .condition:hover {
+    background-color: #20AD59;
+    color: #000000;
+    border-color: white;
+}
+
+/*LIBRARY + LEARN MORE*/
+#library .info-h1, 
+#learnmore .info-h1 {
+    margin: 5% 3% 1%;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+#library .right .eye-info,
+#learnmore .eye-info {
+    height: 80%;
+    background-color: var(--Tertiary);
+    overflow-y: auto;
+}
+
+#library .info-h2, 
+#learnmore .info-h2 {
+    margin: 5% 3% 1%;
+    font-size: large;
+}
+
+#library .info-p, 
+#learnmore .info-p {
+    text-align: justify;
+    margin: 1% 5% 5% 10%;
+}
+
+#library .info-ul, 
+#learnmore .info-ul {
+    text-align: justify;
+    margin: 1% 5% 5%;
+}
+
+/*LEARN MORE*/
+#learnmore {
+    display: none;
+    position: relative;
+    background-color: var(--Tertiary);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--Tertiary);
+    margin: 5% 7% 0 3%;
+    flex: 0 0 auto; 
+    padding-left: calc(2% * -1);
+    height: 400px;
+    width: 40%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#learnmore .info-h1 {
+    padding-top: 3%;
+}
+
+#learnmore .eye-info {
+    height: 70%;
+    margin-top: 3%;
+}
+
+#closeLearnmore {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    border-radius: 0 5px 0 0;
+    font-size: xx-large;
+    font-weight: bold;
+    padding: 3% 4%;
+    cursor: pointer;
+    color: var(--Secondary);
+}
+
+#closeLearnmore:hover {
+    color: white;
+    background-color: crimson;
+}
 
 
 
@@ -367,13 +478,7 @@ span {
     }
 
     /*FOR THE INDEX PAGE*/
-    #assess {
-        flex-direction: column;
-        padding-top: 50px;
-        min-height: calc(100dvh - 50px);
-    }
-
-    #library {
+    #assess, #library {
         flex-direction: column;
         padding-top: 50px;
         min-height: calc(100dvh - 50px);
@@ -423,6 +528,8 @@ span {
 
     .content .row {
         flex-direction: column;
+        
+        overflow-x: hidden;
     }
 
     .row .image {
@@ -476,7 +583,7 @@ span {
     }
 
     #result .row .text {
-        margin: 0;
+        /*margin: 0;*/
         align-items: center;
         /*background-color: red;*/
         text-align: left;
@@ -494,6 +601,8 @@ span {
     #result .row .image img {
         max-width: 70%;
         height: auto;
+
+        max-height: 60%;
     }
 
     #result .row .text h2 {
@@ -516,7 +625,75 @@ span {
         font-size: 20px;
     }
 
-    /*START HERE*/
+    #learnmore {
+        width: 70%;
+        height: 80%;
+        margin: 10% 5% 0%;
+
+    }
+
+    #learnmore .eye-info {
+        height: 80%;
+        margin-top: 2%;
+    }
+
+    /*FOR THE LIBRARY PAGE*/
+    .xbutton {
+        display: block;
+        position: absolute;
+        top: 23%;
+        right: 14%;
+        flex: 1;
+        border-radius: 0 5px 0 0;
+        font-size: xx-large;
+        font-weight: normal;
+        padding: 1% 3%;
+        cursor: pointer;
+        /*background-color: var(--Tertiary);*/
+    }
+
+    .xbutton:hover {
+        color: white;
+        background-color: crimson;
+    }
+
+    #library .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #library .row .right {
+        display: none;
+        position: absolute;
+        height: 60%;
+        width: 70%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px var(--Tertiary);
+    }
+
+    #library .condition {
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        padding: 3% 2%;
+    }
+
+    #library .eye-info {
+        min-height: 90%;
+    }
+
+    #library .info-h1 {
+        padding: 1% 3% 1%;
+        margin: 0%;
+    }
+
+    
     /*FOR THE FAQ PAGE*/
 
     #faq{
@@ -545,7 +722,7 @@ span {
         justify-content: start;
         flex: 1.9;
         width: 100%;
-        overflow-y: auto;
+        overflow-y: unset;
         /*background-color: red;*/
     }
     
@@ -615,7 +792,49 @@ span {
 
 
 
-@media screen and (max-width: 360px){
+@media screen and (max-width: 480px){
+
+    .xbutton {
+        /*top: 200px;
+        right: 45px;*/
+        top: 18.5%;
+        right: 12%;
+        font-weight: normal;
+    }
+
+    #library .text h1 {
+        font-size: 35px;
+        max-width: 90%;
+    }
+
+    #library .condition {
+        max-width: 60%;
+    }
+
+    #library .row .right {
+        height: 55%;
+        top: 45%;
+    }
+
+    #library .info-h1, #learnmore .info-h1 {
+        font-size: 20px;
+    }
+
+    #result #learnmore .eye-info{
+        height: 85%;
+    }
+
+    #result #learnmore .info-h2{
+        margin: 10% 3% 1%;
+    }
+
+    #result #learnmore .info-p{
+        margin: 1% 5% 5% 10%;
+    }
+
+    #result #learnmore .info-p{
+        margin: 1% 5% 5%;
+    }
 
     #faq{
         padding-top: 50px;
@@ -653,6 +872,7 @@ span {
 
     #faq .row .text p{
         font-size: 11px;
+        max-width: 70%;
     }
 
 
@@ -726,4 +946,3 @@ span {
 .content .buttonBlue{
     color: white;
 }
-
