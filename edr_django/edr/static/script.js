@@ -1,3 +1,99 @@
+if (inLibrary) {
+    //LIBRARY//////////////////////////////////////////////////////////////////////
+    function conditionClick() {
+        document.querySelectorAll('.condition').forEach(item => {
+            item.addEventListener('click', event => {
+                document.querySelectorAll('.condition').forEach(condition => {
+                    condition.classList.remove('selected');
+                });
+                event.target.classList.add('selected');
+                displayInfo(event);
+
+                document.querySelector('#info .info-h1').style.display = 'block';
+                document.querySelector('#info .eye-info').style.display = 'block';
+
+                if (window.matchMedia("(max-width: 768px)").matches && document.querySelector('.right').style.display === 'block') {
+                    document.querySelector('.xbutton').style.display = 'block';
+                }
+            });
+        });
+    }
+    
+    if (window.matchMedia("(max-width: 768px)").matches && document.querySelector('.right').style.display === 'block') {
+        document.querySelector('.xbutton').style.display = 'block';
+        conditionClick();
+    } else {
+        document.querySelector('.xbutton').style.display = 'none';
+        conditionClick();
+    }
+    
+    document.querySelector('.xbutton').addEventListener('click', function () {
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            document.querySelector('.right').style.display = 'none';
+            document.querySelector('.xbutton').style.display = 'none';
+        }
+    });
+
+    window.addEventListener('resize', function () {
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            if (document.querySelector('.right').style.display === 'block') {
+                document.querySelector('.xbutton').style.display = 'block'; 
+            } else {
+                document.querySelector('.xbutton').style.display = 'none'; 
+            }
+        } else {
+            document.querySelector('.xbutton').style.display = 'none'; 
+        }
+    });
+
+    function displayInfo(event) {
+        var eyeCondition = event.target.getAttribute('data-info');
+        var eyeInfo = getEyeInfo(eyeCondition);
+    
+        var infoClass = 'eye-info';
+        if (eyeInfo.name === 'Unknown') {
+            infoClass = 'image-info';
+            document.getElementById('info').style.backgroundColor = 'transparent';
+            document.getElementById('info').style.overflowY = 'hidden';
+        } else {
+            document.getElementById('info').style.backgroundColor = 'var(--Tertiary)';
+            document.getElementById('info').style.overflowY = 'auto';
+        }
+        
+        var infoHTML = '';
+        if (eyeInfo.name !== 'Unknown') {
+            infoHTML += `<h1 class="info-h1">${eyeInfo.name}</h1>`;
+        }
+    
+        infoHTML += `<div class="${infoClass}">`;
+        infoHTML += generateContent(eyeInfo);
+        infoHTML += `</div>`;
+
+        document.getElementById('info').innerHTML = infoHTML;
+        document.querySelector('.right').style.display = 'block';
+    }
+
+    //Event listener for clicking burger icon
+    document.querySelector('.main_nav_icon').addEventListener('click', function () {
+        var navUl = document.querySelector('nav ul');
+        var rightElement = document.querySelector('.right');
+        var textElement = document.querySelector('.text');
+        var xButton = document.querySelector('.xbutton');
+
+        var isNavActive = navUl.classList.contains('active');
+
+        if (isNavActive) {
+            rightElement.style.zIndex = '998';
+            textElement.style.zIndex = '1';
+            xButton.style.zIndex = '999';
+        } else {
+            rightElement.style.zIndex = '-1';
+            xButton.style.zIndex = '-1';
+            textElement.style.zIndex = '-2';
+        }
+    });
+}
+
 if (!DEBUG) {
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.main_nav_icon').addEventListener('click', function () {
@@ -68,6 +164,7 @@ if (!DEBUG) {
 console.log("Jan's code finished.")
 
 /*START HERE*/
+//FAQS-ACCORDIONS////////////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function () {
     var questions = document.querySelectorAll('.question');
     var answers = document.querySelectorAll('.answer');
@@ -95,7 +192,204 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-/*END HERE*/
+
+//RESULTS-LEARN MORE////////////////////////////////////////////////////////////////////////
+document.addEventListener('DOMContentLoaded', function() {
+    var resultOptions = document.getElementById('result-options');
+    var learnMore = document.getElementById('learnmore');
+    var learnMoreButton = document.getElementById('learnmore_button');
+    var closeLearnMoreButton = document.getElementById('closeLearnmore');
+    var imageContainer = document.querySelector('.image');
+    var mainNavIcon = document.querySelector('.main_nav_icon');
+    var navUl = document.querySelector('nav ul');
+
+    learnMore.style.display = 'none';
+
+    learnMoreButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        var resultLblText = document.getElementById('result_lbl').innerText.trim();
+        var detectedCondition = resultLblText.charAt(0).toUpperCase() + resultLblText.substring(1).toLowerCase();
+        console.log('Detected Condition:', detectedCondition);
+
+        var eyeInfo = getEyeInfo(detectedCondition);
+        if (eyeInfo.name !== 'Unknown') {
+            resultOptions.style.display = 'none';
+            learnMore.style.display = 'block';
+
+            if (window.innerWidth <= 768) {
+                imageContainer.style.display = 'none';
+            }
+
+            document.querySelector('#learnmore .info-h1').textContent = eyeInfo.name;
+            var eyeInfoHTML = generateContent(eyeInfo);
+            document.querySelector('#learnmore .eye-info').innerHTML = eyeInfoHTML;
+        }
+    });
+
+    closeLearnMoreButton.addEventListener('click', function() {
+        resultOptions.style.display = 'flex';
+        learnMore.style.display = 'none';
+        imageContainer.style.display = 'flex';
+    });
+
+    // Event listener for clicking burger icon
+    mainNavIcon.addEventListener('click', function() {
+        var isNavUlActive = navUl.classList.contains('active');
+
+        // Adjust z-index based on nav ul active state when main nav icon is clicked
+        if (isNavUlActive) {
+            learnMore.style.zIndex = '-1';
+        } else {
+            learnMore.style.zIndex = '998';
+            closeLearnMoreButton.style.zIndex = '999';
+        }
+    });
+});
+
+//global for library and learn more////////////////////////////////////////////////////////////////////////
+function generateContent(eyeInfo) {
+    var infoClass = (eyeInfo.name === 'Unknown') ? 'image-info' : 'eye-info';
+    var contentHTML = `${generateContentItem(eyeInfo.details)}
+                        <p class="info-h2">CAUSES</p>${generateContentItem(eyeInfo.cause)}`;
+
+    if (eyeInfo.symptoms) {
+        contentHTML += `<p class="info-h2">SYMPTOMS</p>${generateContentItem(eyeInfo.symptoms)}`;
+    }
+    if (eyeInfo.treatments) {
+        contentHTML += `<p class="info-h2">TREATMENTS</p>${generateContentItem(eyeInfo.treatments)}`;
+    }
+    if (eyeInfo.recommendations) {
+        contentHTML += `<p class="info-h2">RECOMMENDATIONS</p>${generateContentItem(eyeInfo.recommendations)}`;
+    }
+    
+    return contentHTML;
+}
+
+function generateContentItem(content) {
+    if (Array.isArray(content)) {
+        return '<ul class="info-ul">' + content.map(item => `<li>${item}</li>`).join('') + '</ul>';
+    } else {
+        return `<p class="info-p">${content}</p>`;
+    }
+}
+
+function getEyeInfo(condition) {
+    switch (condition) {
+        case 'Normal':
+            return {
+                name: 'NORMAL VISION',
+                details: 'Normal vision means your eyes are free from physically visible indications of a disease. It indicates that your eyes are functioning well without any noticeable issues.',
+                cause: 'Maintaining normal vision is often attributed to overall eye health and good habits.',
+                recommendations: [
+                    'Eat a balanced diet rich in vitamins and minerals, particularly those beneficial for eye health like vitamin A, C, E, and omega-3 fatty acids.',
+                    'Protect your eyes from harmful UV rays by wearing sunglasses outdoors.',
+                    'Practice good eye hygiene, such as avoiding rubbing your eyes excessively and washing your hands regularly.',
+                    'Take regular breaks when using digital screens for extended periods to reduce eye strain.',
+                    'Ensure proper lighting when reading or working to prevent eye fatigue.',
+                    'Get regular eye check-ups with an optometrist or ophthalmologist to monitor your eye health and detect any issues early.',
+                ],
+            };
+        case 'Cataract':
+            return {
+                name: 'CATARACT',
+                details: 'Cataracts are cloudy areas that form on the lens of your eye. Your lens is a clear, flexible structure made mostly of proteins (crystallins). As you get older, the proteins in your lens break down, forming cloudy patches that affect your vision.',
+                cause: 'The main cause of cataracts is the gradual breakdown of proteins in your lens. However, certain genetic and environmental factors can raise your risk of developing cataracts or developing them at a younger age compared with others.',
+                symptoms: [
+                    'Vision that’s cloudy, blurry, foggy, or filmy.',
+                    'Changes in the way you see color (colors may look faded or not as vivid).',
+                    'Sensitivity to bright sunlight, headlights, or lamps.',
+                    'Glare, including halos or streaks that form around lights.',
+                    'Difficulty seeing at night.',
+                    'Changes in your vision prescription, including near-sightedness that gets worse.',
+                    'Needing a brighter light to read.',
+                    'Double vision.'
+                ],
+                treatments: 'Cataract surgery is the only way to remove cataracts and restore your clear vision. During cataract surgery, an ophthalmologist removes your clouded natural lens and replaces it with an intraocular lens (IOL). An IOL is an artificial lens that permanently stays in your eye. There are many different options for IOLs that your provider can discuss with you. </br></br> The main benefit of an IOL is that it’s clear — like your natural lens should be. Another benefit is that it can correct refractive errors, allowing you to rely less on glasses or contact lenses after your surgery.'
+            };
+        case 'Conjunctivitis':
+            return {
+                name: 'CONJUNCTIVITIS',
+                details: 'Often referred to casually as “pink eye”, conjunctivitis is the swelling or inflammation of the conjunctiva, the thin, transparent layer of tissue that lines the inner surface of the eyelid and covers the white part of the eye.',
+                cause: 'The pink or reddish color of pink eye happens when the blood vessels in the membrane covering your eye (the conjunctiva) gets inflamed, making them more visible. Causes of inflammation include: Viruses, bacteria, allergens, irritating substances, sexually transmitted infections, a foreign object in your eye, blocked or incompletely opened tear ducts in babies, and autoimmune conditions.',
+                symptoms: [
+                    'Redness in the white of your eye or inner eyelid.',
+                    'Increased tearing.',
+                    'Thick yellow discharge that crusts over your eyelashes, especially after sleep.',
+                    'Green or white discharge from your eye.',
+                    'Gritty feeling in one or both eyes.',
+                    'Itchy eyes (especially in pink eye caused by allergies).',
+                    'Burning eyes (especially in pink eye caused by chemicals and irritants).',
+                    'Blurred vision.'
+                ],
+                treatments: 'The treatment for pink eye varies depending on the underlying cause, whether it’s bacterial, viral, allergenic, or due to an irritant. </br></br> Bacterial conjunctivitis typically requires antibiotics in the form of eye drops, ointments, or pills, while viral conjunctivitis often resolves on its own but may require antiviral medication for certain infections like herpes simplex or varicella-zoster. Irritant-induced conjunctivitis can be managed by rinsing the eyes with warm water to remove the irritant, with immediate medical attention needed for strong chemical exposures. Allergic conjunctivitis is treated with prescription or over-the-counter eye drops containing antihistamines or anti-inflammatory drugs, while pink eye caused by sexually transmitted infections or autoimmune diseases requires specific medical treatments tailored to the underlying condition. Additionally, newborns at risk of bacterial conjunctivitis are typically provided with antibiotic ointment as a preventive measure.',
+            };
+        case 'Ectropion':
+            return {
+                name: 'ECTROPION',
+                details: 'Ectropion is the medical name for outward-facing eyelid. When you have ectropion, the inside of your eyelid can become irritated. The condition can happen to an upper or lower eyelid, but it often happens to the lower lid.',
+                cause: [
+                    'Involutional ectropion is the most common type of ectropion. This can be associated with constant eye rubbing, but it’s most often related to aging eyelids. The eyelids get looser because muscles and ligaments get looser.',
+                    'Paralytic ectropion happens along with facial nerve palsy, like Bell’s palsy. This type of palsy comes on quickly. It often causes drooping of one side of your face. A stroke can also cause cranial nerve paralysis.',
+                    'Cicatricial ectropion can be caused by scars and by excessive and repeated sun exposure. You may have this type of ectropion if you’ve already had blepharoplasty (eyelid surgery) or any other type of eye injury, like burns or chemical irritation.',
+                    'Mechanical ectropion happens when your lower eyelid is pulled away from the eye by some type of heavy weight. This could be a tumor, a mass of fat or edema (swelling, water retention.)',
+                    'Congenital ectropion is the least common type. This is a type of outward-turning eyelid that you’re born with. Down syndrome and blepharophimosis syndrome are two congenital conditions that may make ectropion more likely.'
+                ],
+                symptoms: [
+                    'Feeling like you have something in your eye.',
+                    'Dryness.',
+                    'Redness.',
+                    'Tearing (watering) of the eye.'
+                ],
+                treatments: 'Your provider will almost always begin your treatment by prescribing artificial tears or other types of drops or ointments to add moisture to your eye. </br></br> If your provider thinks that eye drops you’ve been using over a long period of time are related to the ectropion, they will ask you to stop using these drops. Your condition may improve when the drops are stopped. </br></br> If the ectropion is related to a skin condition, your provider may first treat the skin condition and that may stop the ectropion. </br></br> After that, your healthcare provider is likely to suggest surgery to treat ectropion if you’re well enough to have surgery. Most of these kinds of surgeries are on an outpatient basis, meaning you can go home the same day. </br></br> If your healthcare provider is doing surgery on your lower eyelid for ectropion, they’ll remove part of the lid (usually at the outer edge of the eye) and reattach the ligaments in a tighter position. They’ll want to make sure that the lids fit together again and that the punctum (the hole where tears flow into the nasal cavity) is in the correct place. </br></br> Some ectropion surgeries may require a skin graft, such as surgery to correct scarring that causes ectropion. </br></br> In some cases, you may need more than one surgery to fix the ectropion completely.',
+            };
+        case 'Pterygium':
+            return {
+                name: 'PTERYGIUM',
+                details: 'Pterygium (pronounced tur-IJ-ee-um) is a raised, fleshy growth on your eye’s conjunctiva. Your conjunctiva is the clear membrane that covers the white of your eye. Pterygium can affect one or both of your eyes but usually not at the same time. When it affects both eyes at the same time, it’s called bilateral pterygium.',
+                cause: [
+                    'Long-term exposure to the sun’s ultraviolet (UV) light (most common cause).',
+                    'Eye irritation from hot and dry weather, wind and dust.'
+                ],
+                symptoms: [
+                    'A slightly raised pink growth on your eye.',
+                    'Red, irritated or swollen eyes.',
+                    'Dry eyes, itchy eyes or burning eyes.',
+                    'Feeling like you have sand or grit is in your eye.',
+                    'Teary eyes.',
+                    'Increase in the size and spread of the lesion.',
+                    'An unpleasant appearance of your eye due to the size of the lesion.',
+                    'Blurred vision or double vision (if pterygium grows onto your cornea).'
+                ],
+                treatments: 'If your symptoms don’t cause discomfort or interfere with your vision, you probably don’t need treatment. Your provider will schedule office visits to see if the pterygium is growing or causing vision problems. </br></br> You may need surgery if eye drops and eye ointments aren’t relieving your symptoms, the pterygium grows so large that it blocks your vision or pulls on your cornea and changes its curve causing astigmatism, or if the way your eye looks is not acceptable to you.',
+            };
+        case 'Trachoma':
+            return {
+                name: 'TRACHOMA',
+                details: 'Trachoma is an eye disease caused by a bacterium called Chlamydia trachomatis. The infection can cause irreversible blindness. It’s an issue in poor and rural areas throughout the world with poorer hygiene, limited access to clean water and sanitation, and problems with crowding.',
+                cause: 'Trachoma is a bacterial infection that starts out being a little bit like pink eye (conjunctivitis), with symptoms of redness, irritation and discharge. Trachoma spreads through personal contact, with infected discharge from eyes and noses touching other people’s hands or infected clothing or bedding. Flies can also spread the infectious discharge from one person to another. Symptoms can begin from five to 12 days after you’ve been exposed to the active infection.',
+                symptoms: [
+                    'Red and irritated eyes.',
+                    'Swollen eyelids.',
+                    'Blurred vision.',
+                    'Watery discharge from the eyes.',
+                    'Discharge from the nose.',
+                    'Tightened eyelids due to scar tissue.',
+                    'Inward-turning eyelashes because of the tight eyelids.',
+                    'Extreme eye pain caused by eyelashes scraping against your cornea.',
+                    'Light intolerance.',
+                    'Impaired vision, possible blindness.'
+                ],
+                treatments: 'In early stages, your provider can treat and cure trachoma by giving you antibiotics. The two drugs recommended for trachoma are azithromycin and an ointment made with tetracycline. </br></br>Trachoma that isn’t treated, or trachoma that happens repeatedly, can develop into trachomatous trichiasis. Your provider may suggest surgery. This can change the position of eyelashes so they no longer scrape your eye. This should prevent further scarring. </br></br>Severe damage to your cornea may lead your provider to recommend a corneal transplant. </br></br> If trachoma isn’t treated, you won’t be able to reverse the blindness that occurs.',
+            };
+        default:
+            return {
+                name: 'Unknown',
+            };
+    }
+}
+//END HERE///////////////////////////////////////////////////////////////////////
+
 
 
 
