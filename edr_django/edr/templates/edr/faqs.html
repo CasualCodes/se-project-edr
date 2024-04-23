@@ -15,7 +15,7 @@
                 <ul>
                     <li><a href="/edr">HOME</a></li>
                     <li><a href="/edr/assess">ASSESS</a></li>
-                    <li><a href="#">LIBRARY</a></li>
+                    <li><a href="/edr/library">LIBRARY</a></li>
                     <li class="current_page"><a href="#">FAQ</a></li>
                     <li><img src="img/DarkMode.png" alt="LightMode" id="theme"></li>
                 </ul>
@@ -28,8 +28,7 @@
                 <div class="text">
                     <h1>Frequently Asked <br>Questions</h1>
                     <p>Find answers to common questions about AIDentifye.<br>
-                         If you can't find what you're looking for, feel free to<br>
-                        contact us at</a>
+                        If you can't find what you're looking for, feel free to contact us at ask@aidentifye.com</a>
                     </p>
                 </div>
 
@@ -44,7 +43,7 @@
                         <div class="answer">Yes, AIDentifye is designed to be accessible on a wide range of devices, including smartphones, tablets, and desktop computers. </div>
                              
                         <div class="question">Can AIDentifye diagnose any types of eye disease?</div>
-                        <div class="answer">While AIDentifye is capable of detecting and providing assessments of many common eye diseases, only diseases trained by the model can be identified. <br><br> You can learn more about the specific eye conditions that AIDentifye can diagnose here.</div>
+                        <div class="answer">While AIDentifye is capable of detecting and providing assessments of many common eye diseases, only diseases trained by the model can be identified. <br><br> You can learn more about the specific eye conditions that AIDentifye can diagnose <a href="/edr/library">here.</a></div>
                              
                         <div class="question">Are my personal information and images secure on AIDentifye?</div>
                         <div class="answer">Yes, we take the security and privacy of your personal information and images seriously. All data uploaded to AIDentifye is stored securely and deleted after assessment.</div>
@@ -70,6 +69,7 @@
         var darkuploadurl = "{% static 'DarkUpload.jpg' %}"
         console.log("Loaded dark mode static files.")
         var DEBUG = false;
+        var inLibrary = false;
     </script>
     <script src="{% static 'script.js' %}"></script>
 </body>
