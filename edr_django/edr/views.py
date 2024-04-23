@@ -85,6 +85,10 @@ def list(request):
     context = {}
     return render(request, "edr/list_screen.html", context)
 
+def dis_library(request):
+    context = {}
+    return render(request, "edr/library.html", context)
+
 def results(request, filename):
     '''
     # PSEUDOCODE
