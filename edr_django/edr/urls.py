@@ -8,5 +8,6 @@ urlpatterns = [
     path("assess/", views.assess, name="assess"),
     path("faq/", views.faq, name="faq"),
     path("list/", views.list, name="list"),
+    path("library/", views.dis_library, name="library"),
     path("assess/results/<str:filename>", views.results, name="results"),
 ]
