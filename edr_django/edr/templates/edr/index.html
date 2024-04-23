@@ -27,7 +27,7 @@
                 <ul>
                     <li class="current_page"><a href="/edr">HOME</a></li>
                     <li><a href="/edr/assess">ASSESS</a></li>
-                    <li><a href="#">LIBRARY</a></li>
+                    <li><a href="/edr/library">LIBRARY</a></li>
                     <li><a href="/edr/faq">FAQ</a></li>
                     <li><img src="{% static 'DarkMode.png'%}" alt="LightMode" id="theme"></li>
                 </ul>
@@ -38,9 +38,7 @@
         <div class="content" id="assess">
             <div class="text">
                 <h1>Prioritize Your <br>Eye Health</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur<br>
-                    adipiscin elit. Quisque pulvinar porta purus<br>
-                    quis porta
+                <p>Assess your eye condition with your camera or gallery input.
                 </p>
                 <a href="/edr/assess">ASSESS NOW</a>
             </div>
@@ -52,11 +50,9 @@
         <div class="content" id="library">
             <div class="text">
                 <h1>AIDENTIFYE <br>Library</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur<br>
-                    adipiscin elit. Quisque pulvinar porta purus<br>
-                    quis porta
+                <p>Learn more about the eye conditions with the library.
                 </p>
-                <a href="#">LEARN MORE</a>
+                <a href="/edr/library">LEARN MORE</a>
             </div>
             <div class="image">
                 <img src="{% static 'DarkLibrary.jpg'%}" alt="LibraryImage" id="library-image">
@@ -81,6 +77,7 @@
         var darkuploadurl = "{% static 'DarkUpload.jpg' %}"
         console.log("Loaded dark mode static files.")
         var DEBUG = false;
+        var inLibrary = false;
     </script>
     <script src="{% static 'script.js'%}"></script>
 
