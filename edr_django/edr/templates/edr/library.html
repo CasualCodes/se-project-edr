@@ -1,0 +1,92 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Importing the Font (Montserrat)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!--Importing CSS-->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <title>AIDentifye</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header>
+            <a href="/edr"><h1>AIDENTIFYE</h1></a>
+            <nav>
+                <ul>
+                    <li><a href="/edr">HOME</a></li>
+                    <li><a href="/edr/assess">ASSESS</a></li>
+                    <li class="current_page"><a href="#">LIBRARY</a></li>
+                    <li><a href="/edr/faq">FAQ</a></li>
+                    <li><img src="{% static 'DarkMode.png'%}" alt="LightMode" id="theme"></li>
+                </ul>
+            </nav>
+            <img src="{% static 'NavIcon.png'%}" alt="NavIcon" class="main_nav_icon">
+        </header>
+
+        <div class="content" id="library">
+            <div class="row">
+                <div class="text">
+                    <h1>AIDENTIFYE Library</h1>
+                    <div class="condition" data-info="Normal">NORMAL</div>
+                    <div class="condition" data-info="Cataract">CATARACT</div>
+                    <div class="condition" data-info="Conjunctivitis">CONJUNCTIVITIS</div>
+                    <div class="condition" data-info="Ectropion">ECTROPION</div>
+                    <div class="condition" data-info="Pterygium">PTERYGIUM</div>
+                    <div class="condition" data-info="Trachoma">TRACHOMA</div>
+                </div>
+
+                <div class="right" id="info">
+                    <div class="image">
+                        <img src="{% static 'DarkLibrary.jpg'%}" alt="LibraryImage" id="library-image">
+                    </div>
+
+                    <div class="info-h1"></div>
+                    <div class="eye-info"> </div>
+
+                </div>
+
+                
+                
+                <div class="xbutton">&times;</div>
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log("Begin initializing static files...")
+        var lightmodeurl = "{% static 'LightMode.png' %}";
+        console.log(lightmodeurl)
+        var lightassessurl = "{% static 'LightAssess.jpg' %}"
+        var lightlibraryurl = "{% static 'LightLibrary.jpg' %}"
+        var navicon2url = "{% static 'NavIcon2.png' %}"
+        var lightuploadurl = "{% static 'LightUpload.jpg' %}"
+        console.log("Loaded light mode static files.")
+
+        var darkmodeurl = "{% static 'DarkMode.png' %}"
+        var darkassessurl = "{% static 'DarkAssess.jpg' %}"
+        var darklibraryurl = "{% static 'DarkLibrary.jpg' %}"
+        var naviconurl = "{% static 'NavIcon.png' %}"
+        var darkuploadurl = "{% static 'DarkUpload.jpg' %}"
+        console.log("Loaded dark mode static files.")
+        var DEBUG = false;
+        var inLibrary = true;
+    </script>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>
