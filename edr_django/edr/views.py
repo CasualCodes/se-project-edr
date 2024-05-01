@@ -237,11 +237,12 @@ def results(request, filename):
     context = {'image': displayed_image, 'predicted_label': predicted_label, 'apology': apology, 'reassess_prompt': reassess_prompt, 'confidence': confidence_str}
     return render(request, "edr/results_screen.html", context)
 
-def assess(request):
+def assess(request, valid_input=1):
     print(f"Great! You're using Python 3.6+. If you fail here, use the right version.")
     message = 'Upload as many files as you want!'
     print("Loading Assess page...")
     # Handle file upload
+    # This runs only on a POST request, triggered by a form submission
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         print("Initialized form variable.")
@@ -249,12 +250,25 @@ def assess(request):
             newimg = Image(imgfile=request.FILES['imgfile'])
             newimg.save()
 
+            # TODO: If extension not in list of image file extensions
+            # Get the extension of the file
+            _, ext = os.path.splitext(newimg.imgfile.name)
+            
+            # Check if the extension is in the list of common image file extensions
+            # if ext.lower() in ['.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff']:
+            if ext.lower() not in ['.jpg', '.jpeg', '.png']:
+                # Redirect back to assess again, this time with message for user
+                return redirect('./0') # 0 parameter means message will be displayed, 1 means no
+
+
+
             # Redirect to the image list after POST
             print("Redirecting to results...")
-            return redirect('results/'+newimg.imgfile.name)
+            return redirect('results/'+newimg.imgfile.name) # this is where the filename argument comes from
         else:
             message = 'The form is not valid. Fix the following error:'
             print(message)
+    # Othewise it is just a normal GET request
     else:
         form = ImageForm()  # An empty, unbound form
         print("Initialized empty, unbound form.")
@@ -262,8 +276,13 @@ def assess(request):
     # Load images for the list page
     images = Image.objects.all()
 
+    if valid_input == 0:
+        message_str = "Please upload a JPG, JPEG, or PNG file!"
+    else:
+        message_str = ""
+
     # Render list page with the images and the form
-    context = {'images': images, 'form': form, 'message': message}
+    context = {'images': images, 'form': form, 'message_str': message_str}
     return render(request, 'edr/assess_screen.html', context)
     
 def faq(request):
