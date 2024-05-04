@@ -899,11 +899,11 @@ span {
     }
 
     .answer{
-        overflow: scroll;
-        max-height: 100px;
+        overflow: auto;
         max-width: 70%;
         font-size: 10px;
-        
+        margin-bottom: 0%;
+        flex-shrink: 0;
     }
 
     #faq .row .text p{
