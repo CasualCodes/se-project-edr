@@ -13,36 +13,49 @@ if (inLibrary) {
                 document.querySelector('#info .eye-info').style.display = 'block';
 
                 if (window.matchMedia("(max-width: 768px)").matches && document.querySelector('.right').style.display === 'block') {
-                    document.querySelector('.xbutton').style.display = 'block';
+                    openPopup();
                 }
             });
         });
     }
+
+    function openPopup(){
+        document.querySelector('.xbutton').style.display = 'block';
+        document.querySelector('.overlaylib').style.display = 'block';
+    }
+
+    function closePopup(){
+        document.querySelector('.right').style.display = 'none';
+        document.querySelector('.xbutton').style.display = 'none';
+        document.querySelector('.overlaylib').style.display = 'none';
+    }
     
     if (window.matchMedia("(max-width: 768px)").matches && document.querySelector('.right').style.display === 'block') {
-        document.querySelector('.xbutton').style.display = 'block';
+        openPopup();
         conditionClick();
     } else {
         document.querySelector('.xbutton').style.display = 'none';
+        document.querySelector('.overlaylib').style.display = 'none';
         conditionClick();
     }
     
-    document.querySelector('.xbutton').addEventListener('click', function () {
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            document.querySelector('.right').style.display = 'none';
-            document.querySelector('.xbutton').style.display = 'none';
+    document.querySelector('.xbutton').addEventListener('click', closePopup);
+    
+    document.querySelector('.overlaylib').addEventListener('click', function() {
+        if (window.matchMedia("(max-width: 768px)").matches && document.querySelector('.right').style.display === 'block') {
+            closePopup();
         }
     });
 
     window.addEventListener('resize', function () {
         if (window.matchMedia("(max-width: 768px)").matches) {
             if (document.querySelector('.right').style.display === 'block') {
-                document.querySelector('.xbutton').style.display = 'block'; 
+                openPopup();
             } else {
-                document.querySelector('.xbutton').style.display = 'none'; 
+                closePopup();
             }
         } else {
-            document.querySelector('.xbutton').style.display = 'none'; 
+            closePopup();
         }
     });
 
@@ -72,34 +85,37 @@ if (inLibrary) {
         document.getElementById('info').innerHTML = infoHTML;
         document.querySelector('.right').style.display = 'block';
     }
-
-    //Event listener for clicking burger icon
-    document.querySelector('.main_nav_icon').addEventListener('click', function () {
-        var navUl = document.querySelector('nav ul');
-        var rightElement = document.querySelector('.right');
-        var textElement = document.querySelector('.text');
-        var xButton = document.querySelector('.xbutton');
-
-        var isNavActive = navUl.classList.contains('active');
-
-        if (isNavActive) {
-            rightElement.style.zIndex = '998';
-            textElement.style.zIndex = '1';
-            xButton.style.zIndex = '999';
-        } else {
-            rightElement.style.zIndex = '-1';
-            xButton.style.zIndex = '-1';
-            textElement.style.zIndex = '-2';
-        }
-    });
 }
 
-if (!DEBUG) {
+if (!DEBUG) { 
     document.addEventListener('DOMContentLoaded', function () {
+        function toggleNavMenu() {
+            var navUl = document.querySelector('nav ul');
+            var overlay = document.querySelector('.overlay');
+            
+            navUl.classList.toggle('active');
+            if (navUl.classList.contains('active')) {
+                overlay.style.display = 'block';
+            } else {
+                overlay.style.display = 'none';
+            }
+        }
+    
+        document.querySelector('.main_nav_icon').addEventListener('click', toggleNavMenu);
+    
+        document.querySelector('.overlay').addEventListener('click', function() {
+            var navUl = document.querySelector('nav ul');
+            if (navUl.classList.contains('active')) {
+                toggleNavMenu();
+            }
+        });
+    });
+    
+    /*document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.main_nav_icon').addEventListener('click', function () {
             document.querySelector('nav ul').classList.toggle('active');
         });
-    });
+    });*/
 
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.nav_icon').addEventListener('click', function () {
@@ -200,10 +216,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var learnMoreButton = document.getElementById('learnmore_button');
     var closeLearnMoreButton = document.getElementById('closeLearnmore');
     var imageContainer = document.querySelector('.image');
+    var overlay = document.querySelector('.overlaylm');
     var mainNavIcon = document.querySelector('.main_nav_icon');
     var navUl = document.querySelector('nav ul');
 
     learnMore.style.display = 'none';
+    overlay.style.display = 'none';
 
     learnMoreButton.addEventListener('click', function(event) {
         event.preventDefault();
@@ -216,8 +234,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (eyeInfo.name !== 'Unknown') {
             resultOptions.style.display = 'none';
             learnMore.style.display = 'block';
+            
 
             if (window.innerWidth <= 768) {
+                overlay.style.display = 'block';
                 imageContainer.style.display = 'none';
             }
 
@@ -230,20 +250,12 @@ document.addEventListener('DOMContentLoaded', function() {
     closeLearnMoreButton.addEventListener('click', function() {
         resultOptions.style.display = 'flex';
         learnMore.style.display = 'none';
+        overlay.style.display = 'none';
         imageContainer.style.display = 'flex';
     });
 
-    // Event listener for clicking burger icon
-    mainNavIcon.addEventListener('click', function() {
-        var isNavUlActive = navUl.classList.contains('active');
-
-        // Adjust z-index based on nav ul active state when main nav icon is clicked
-        if (isNavUlActive) {
-            learnMore.style.zIndex = '-1';
-        } else {
-            learnMore.style.zIndex = '998';
-            closeLearnMoreButton.style.zIndex = '999';
-        }
+    overlay.addEventListener('click', function() {
+        closeLearnMoreButton.click();
     });
 });
 
