@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -14,54 +14,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <!--Importing CSS-->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
     <title>AIDentifye</title>
 </head>
 
 <body>
+
     <div class="wrapper">
         <header>
             <a href="/edr"><h1>AIDENTIFYE</h1></a>
             <nav>
                 <ul>
-                    <li class="current_page"><a href="/edr">HOME</a></li>
+                    <li><a href="/edr">HOME</a></li>
                     <li><a href="/edr/assess">ASSESS</a></li>
-                    <li><a href="/edr/library">LIBRARY</a></li>
+                    <li class="current_page"><a href="#">LIBRARY</a></li>
                     <li><a href="/edr/faq">FAQ</a></li>
                     <li><img src="{% static 'DarkMode.png'%}" alt="LightMode" id="theme"></li>
                 </ul>
             </nav>
-            <img src="{% static 'NavIcon.png'%}" alt="NavIcon" class="main_nav_icon" id="mainNav">
+            <img src="{% static 'NavIcon.png'%}" alt="NavIcon" class="main_nav_icon">
         </header>
 
-        <div class="content" id="assess">
-            <div class="text">
-                <h1>Prioritize Your <br>Eye Health</h1>
-                <p>Assess your eye condition with your camera or gallery input.
-                </p>
-                <a href="/edr/assess">ASSESS NOW</a>
-            </div>
-            <div class="image">
-                <img src="{% static 'DarkAssess.jpg'%}" alt="AssessImage" id="assess-image">
-            </div>
-        </div>
-
         <div class="content" id="library">
-            <div class="text">
-                <h1>AIDENTIFYE <br>Library</h1>
-                <p>Learn more about the eye conditions with the library.
-                </p>
-                <a href="/edr/library">LEARN MORE</a>
-            </div>
-            <div class="image">
-                <img src="{% static 'DarkLibrary.jpg'%}" alt="LibraryImage" id="library-image">
+            <div class="row">
+                <div class="text">
+                    <h1>AIDENTIFYE Library</h1>
+                    <div class="condition" data-info="Normal">NORMAL</div>
+                    <div class="condition" data-info="Cataract">CATARACT</div>
+                    <div class="condition" data-info="Conjunctivitis">CONJUNCTIVITIS</div>
+                    <div class="condition" data-info="Ectropion">ECTROPION</div>
+                    <div class="condition" data-info="Pterygium">PTERYGIUM</div>
+                    <div class="condition" data-info="Trachoma">TRACHOMA</div>
+                </div>
+
+                <div class="right" id="info">
+                    <div class="image">
+                        <img src="{% static 'DarkLibrary.jpg'%}" alt="LibraryImage" id="library-image">
+                    </div>
+
+                    <div class="info-h1"></div>
+                    <div class="eye-info"> </div>
+
+                </div>
+
+                
+                <div class="xbutton">&times;</div>
+                <div class="overlay"></div>
+                <div class="overlaylib"></div>
+
+
             </div>
         </div>
-
-        <div class="overlay"></div>
     </div>
-
     <script>
         console.log("Begin initializing static files...")
         var lightmodeurl = "{% static 'LightMode.png' %}";
@@ -79,17 +85,9 @@
         var darkuploadurl = "{% static 'DarkUpload.jpg' %}"
         console.log("Loaded dark mode static files.")
         var DEBUG = false;
-        var inLibrary = false;
+        var inLibrary = true;
     </script>
-    <script src="{% static 'script.js'%}"></script>
-
-
+    <script src="{% static 'script.js' %}"></script>
 </body>
 
 </html>
-
-<!-- <div>
-    <button class="buttonBlue" type="button" onclick="location.href='/edr/assess'">Assess</button>
-</div>
-<button class="button" type="button" onclick="location.href='/edr/disclaimer'">Disclaimer</button>
-<button class="button" type="button" onclick="location.href='/edr/list'">Diseases</button> -->
